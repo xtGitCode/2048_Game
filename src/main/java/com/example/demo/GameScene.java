@@ -12,9 +12,9 @@ import javafx.stage.Stage;
 import java.util.Random;
 
 class GameScene {
+    private final static int distanceBetweenCells = 10;
     private static int HEIGHT = 700; //height of tiles
     private static int n = 4;
-    private final static int distanceBetweenCells =10;
     private static double LENGTH = (HEIGHT - ((n + 1) * distanceBetweenCells)) / (double) n;
     private TextMaker textMaker = TextMaker.getSingleInstance();
     private Cell[][] cells = new Cell[n][n];
@@ -31,7 +31,6 @@ class GameScene {
     }
 
     private void randomFillNumber(int turn) {
-
         Cell[][] emptyCells = new Cell[n][n];
         int a = 0;
         int b = 0;
@@ -39,7 +38,7 @@ class GameScene {
         outer:
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
-                if (cells[i][j].getNumber() == 0) {
+                if (cells[i][j].getNumber() == 0) { //check if cells are empty
                     emptyCells[a][b] = cells[i][j];
                     if (b < n-1) {
                         bForBound=b;
@@ -283,17 +282,24 @@ class GameScene {
         gameScene.addEventHandler(KeyEvent.KEY_PRESSED, key ->{
                 Platform.runLater(() -> {
                     int haveEmptyCell;
+                    boolean isValid = false; //to check whether key pressed is valid
                     if (key.getCode() == KeyCode.DOWN) {
+                        isValid = true;
                         GameScene.this.moveDown();
                     } else if (key.getCode() == KeyCode.UP) {
+                        isValid = true;
                         GameScene.this.moveUp();
                     } else if (key.getCode() == KeyCode.LEFT) {
+                        isValid = true;
                         GameScene.this.moveLeft();
                     } else if (key.getCode() == KeyCode.RIGHT) {
+                        isValid = true;
                         GameScene.this.moveRight();
                     }
-                    GameScene.this.sumCellNumbersToScore();
-                    scoreText.setText(score + "");
+                    if (isValid) {
+                        GameScene.this.sumCellNumbersToScore();
+                    }
+                    scoreText.setText(score + ""); //scoring
                     haveEmptyCell = GameScene.this.haveEmptyCell();
                     if (haveEmptyCell == -1) {
                         if (GameScene.this.canNotMove()) {
@@ -303,7 +309,7 @@ class GameScene {
                             root.getChildren().clear();
                             score = 0;
                         }
-                    } else if(haveEmptyCell == 1)
+                    } else if(haveEmptyCell == 1 && isValid)
                         GameScene.this.randomFillNumber(2);
                 });
             });

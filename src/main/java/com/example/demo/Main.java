@@ -34,7 +34,6 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-
         Group menuRoot = new Group();
         Scene menuScene = new Scene(menuRoot, WIDTH, HEIGHT);
         Group accountRoot = new Group();
@@ -48,7 +47,6 @@ public class Main extends Application {
         BackgroundFill background_fill = new BackgroundFill(Color.rgb(120, 100, 100), CornerRadii.EMPTY, Insets.EMPTY);
         Background background = new Background(background_fill);
 
-
         Rectangle backgroundOfMenu = new Rectangle(240, 120, Color.rgb(120, 120, 120, 0.2));
         backgroundOfMenu.setX(WIDTH / 2 - 120);
         backgroundOfMenu.setY(180);
@@ -61,7 +59,7 @@ public class Main extends Application {
 
         Group gameRoot = new Group();
         setGameRoot(gameRoot);
-        Scene gameScene = new Scene(gameRoot, WIDTH, HEIGHT, Color.rgb(189, 177, 92));
+        Scene gameScene = new Scene(gameRoot, WIDTH, HEIGHT, Color.rgb(189, 177, 92)); //bg color game
         setGameScene(gameScene);
         primaryStage.setScene(gameScene);
         GameScene game = new GameScene();
