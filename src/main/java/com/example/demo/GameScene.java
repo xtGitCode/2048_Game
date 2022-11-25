@@ -82,12 +82,20 @@ class GameScene {
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 if (cells[i][j].getNumber() == 0)
-                    return 1;
+                    return 1; //empty
                 if(cells[i][j].getNumber() == 2048)
                     return 0; //win game
             }
         }
-        return -1;
+        return -1; //lose game
+    }
+
+    private void spawnRandom(){
+        int haveEmptyCell;
+        haveEmptyCell = GameScene.this.haveEmptyCell();
+        if(haveEmptyCell==1) {
+            GameScene.this.randomFillNumber(2);
+        }
     }
 
     private int passDestination(int i, int j, char direct) {
@@ -144,47 +152,71 @@ class GameScene {
     }
 
     private void moveLeft() {
+        int moved = 0; // moved var to check whether cells moved
         for (int i = 0; i < n; i++) {
             for (int j = 1; j < n; j++) {
-                moveHorizontally(i, j, passDestination(i, j, 'l'), -1);
+                if (cells[i][j].getNumber() != 0) { //added this if loop to ignore empty cells
+                    moved += moveHorizontally(i, j, passDestination(i, j, 'l'), -1);
+                }
             }
             for (int j = 0; j < n; j++) {
                 cells[i][j].setModify(false);
             }
+        }
+        if(moved>0){ // if any cells moved, spawn random new cell
+            spawnRandom();
         }
     }
 
     private void moveRight() {
+        int moved = 0;
         for (int i = 0; i < n; i++) {
             for (int j = n - 1; j >= 0; j--) {
-                moveHorizontally(i, j, passDestination(i, j, 'r'), 1);
+                if (cells[i][j].getNumber() != 0) {
+                    moved += moveHorizontally(i, j, passDestination(i, j, 'r'), 1);
+                }
             }
             for (int j = 0; j < n; j++) {
                 cells[i][j].setModify(false);
             }
         }
+        if(moved>0){
+            spawnRandom();
+        }
     }
 
     private void moveUp() {
+        int moved = 0;
         for (int j = 0; j < n; j++) {
             for (int i = 1; i < n; i++) {
-                moveVertically(i, j, passDestination(i, j, 'u'), -1);
+                if (cells[i][j].getNumber() != 0) {
+                    moved += moveVertically(i, j, passDestination(i, j, 'u'), -1);
+                }
             }
             for (int i = 0; i < n; i++) {
                 cells[i][j].setModify(false);
             }
+        }
+        if(moved>0){
+            spawnRandom();
         }
 
     }
 
     private void moveDown() {
+        int moved = 0;
         for (int j = 0; j < n; j++) {
             for (int i = n - 1; i >= 0; i--) {
-                moveVertically(i, j, passDestination(i, j, 'd'), 1);
+                if (cells[i][j].getNumber() != 0) {
+                    moved += moveVertically(i, j, passDestination(i, j, 'd'), 1);
+                }
             }
             for (int i = 0; i < n; i++) {
                 cells[i][j].setModify(false);
             }
+        }
+        if(moved>0){
+            spawnRandom();
         }
 
     }
@@ -199,14 +231,17 @@ class GameScene {
         return false;
     }
 
-    private void moveHorizontally(int i, int j, int des, int sign) {
+    private int moveHorizontally(int i, int j, int des, int sign) {
         if (isValidDesH(i, j, des, sign)) {
             GameScene.this.sumCellNumbersToScore(i,j); //insert here so when only cells merge, score is calculated
             cells[i][j].adder(cells[i][des + sign]);
             cells[i][des].setModify(true);
+            return 1;
         } else if (des != j) {
             cells[i][j].changeCell(cells[i][des]);
+            return 1;
         }
+        return 0;
     }
 
     private boolean isValidDesV(int i, int j, int des, int sign) {
@@ -218,14 +253,17 @@ class GameScene {
         return false;
     }
 
-    private void moveVertically(int i, int j, int des, int sign) {
+    private int moveVertically(int i, int j, int des, int sign) {
         if (isValidDesV(i, j, des, sign)) {
             GameScene.this.sumCellNumbersToScore(i,j);
             cells[i][j].adder(cells[des + sign][j]);
             cells[des][j].setModify(true);
+            return 1; // to check whether any cells moved
         } else if (des != i) {
             cells[i][j].changeCell(cells[des][j]);
+            return 1;
         }
+        return 0;
     }
 
     private boolean haveSameNumber(int i, int j) {
@@ -301,13 +339,11 @@ class GameScene {
                         if (haveEmptyCell == -1) {
                             if (GameScene.this.canNotMove()) {
                                 primaryStage.setScene(endGameScene);
-
                                 EndGame.getInstance().endGameShow(endGameScene, endGameRoot, primaryStage, score);
                                 root.getChildren().clear();
                                 score = 0;
                             }
-                        } else if(haveEmptyCell == 1)
-                            GameScene.this.randomFillNumber(2);
+                        }
                     }
                 });
             });
