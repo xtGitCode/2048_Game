@@ -2,8 +2,10 @@ package com.example.demo;
 
 import javafx.application.Application;
 import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Group;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.ButtonType;
@@ -35,7 +37,8 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         Group menuRoot = new Group();
-        Scene menuScene = new Scene(menuRoot, WIDTH, HEIGHT);
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("index.fxml"));
+        Scene menuScene = new Scene(fxmlLoader.load(), WIDTH, HEIGHT);
         Group accountRoot = new Group();
         Scene accountScene = new Scene(accountRoot, WIDTH, HEIGHT, Color.rgb(150, 20, 100, 0.2));
         Group getAccountRoot = new Group();
@@ -57,14 +60,16 @@ public class Main extends Application {
         backgroundOfMenuForPlay.setY(180);
         accountRoot.getChildren().add(backgroundOfMenuForPlay);
 
-        Group gameRoot = new Group();
+        /*Group gameRoot = new Group();
         setGameRoot(gameRoot);
         Scene gameScene = new Scene(gameRoot, WIDTH, HEIGHT, Color.rgb(189, 177, 92)); //bg color game
         setGameScene(gameScene);
         primaryStage.setScene(gameScene);
         GameScene game = new GameScene();
-        game.game(gameScene, gameRoot, primaryStage, endGameScene, endgameRoot);
+        game.game(gameScene, gameRoot, primaryStage, endGameScene, endgameRoot);*/
 
+        primaryStage.setTitle("2048");
+        primaryStage.setScene(menuScene);
         primaryStage.show();
     }
 
