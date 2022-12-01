@@ -36,6 +36,9 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+        Group gameRoot = new Group();
+        setGameRoot(gameRoot);
+        Scene gameScene = new Scene(gameRoot, WIDTH, HEIGHT, Color.rgb(189, 177, 92)); //bg color game
         Group menuRoot = new Group();
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("index.fxml"));
         Scene menuScene = new Scene(fxmlLoader.load(), WIDTH, HEIGHT);
@@ -60,18 +63,11 @@ public class Main extends Application {
         backgroundOfMenuForPlay.setY(180);
         accountRoot.getChildren().add(backgroundOfMenuForPlay);
 
-        /*Group gameRoot = new Group();
-        setGameRoot(gameRoot);
-        Scene gameScene = new Scene(gameRoot, WIDTH, HEIGHT, Color.rgb(189, 177, 92)); //bg color game
-        setGameScene(gameScene);
-        primaryStage.setScene(gameScene);
-        GameScene game = new GameScene();
-        game.game(gameScene, gameRoot, primaryStage, endGameScene, endgameRoot);*/
-
         primaryStage.setTitle("2048");
         primaryStage.setScene(menuScene);
         primaryStage.show();
     }
+
 
     public static void main(String[] args) {
         launch(args);
