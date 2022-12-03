@@ -1,23 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="780.0" prefWidth="813.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.Controller">
+<AnchorPane prefHeight="780.0" prefWidth="780.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.Controller">
    <children>
-      <AnchorPane layoutX="76.0" layoutY="74.0" prefHeight="630.0" prefWidth="674.0">
-         <children>
-            <Label layoutX="218.0" layoutY="72.0" prefHeight="96.0" prefWidth="309.0" text="2048">
-               <font>
-                  <Font name="Wingdings" size="96.0" />
-               </font>
-            </Label>
-            <Button layoutX="273.0" layoutY="249.0" prefHeight="45.0" prefWidth="110.0" text="Start " onAction="#startButton"/>
-            <Button layoutX="273.0" layoutY="306.0" prefHeight="45.0" prefWidth="110.0" text="Quit" onAction="#quitButton"/>
-         </children>
-      </AnchorPane>
+      <ImageView fitHeight="780.0" fitWidth="780.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Images/menuBg.png" />
+
+         </image>
+      </ImageView>
+      <Button layoutX="275.0" layoutY="419.0" onAction="#startButton" prefHeight="58.0" prefWidth="230.0" style="-fx-background-color: #ff5757;" text="Play as guest" textFill="WHITE">
+         <font>
+            <Font name="Montserrat SemiBold" size="24.0" />
+         </font>
+      </Button>
+      <Button layoutX="275.0" layoutY="579.0" onAction="#quitButton" prefHeight="58.0" prefWidth="230.0" style="-fx-background-color: #ff5757;" text="Quit" textFill="WHITE">
+         <font>
+            <Font name="Montserrat SemiBold Italic" size="24.0" />
+         </font>
+      </Button>
+      <Button layoutX="275.0" layoutY="339.0" onAction="#startButton" prefHeight="58.0" prefWidth="230.0" style="-fx-background-color: #ff5757;" text="Login" textFill="#fffafa">
+         <font>
+            <Font name="Montserrat SemiBold" size="24.0" />
+         </font>
+      </Button>
+      <Button layoutX="275.0" layoutY="499.0" onAction="#startButton" prefHeight="58.0" prefWidth="230.0" style="-fx-background-color: #ff5757;" text="Leaderboard" textFill="WHITE">
+         <font>
+            <Font name="Montserrat SemiBold" size="24.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

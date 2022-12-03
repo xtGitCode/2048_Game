@@ -1,6 +1,8 @@
 package com.example.demo;
 
 import javafx.application.Platform;
+import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
@@ -9,6 +11,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.Random;
 
 class GameScene {
@@ -292,14 +295,13 @@ class GameScene {
         score += cellNumber * 2;
     }
 
-    void game(Scene gameScene, Group root, Stage primaryStage, Scene endGameScene, Group endGameRoot) {
+    void game(Scene gameScene, Group root, Stage primaryStage, Scene endGameScene, Group endGameRoot, Scene menuScene) {
         this.root = root;
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 cells[i][j] = new Cell((j) * LENGTH + (j + 1) * distanceBetweenCells,
                         (i) * LENGTH + (i + 1) * distanceBetweenCells, LENGTH, root);
             }
-
         }
 
         Text text = new Text();
@@ -312,6 +314,11 @@ class GameScene {
         scoreText.relocate(750, 150);
         scoreText.setFont(Font.font(20));
         scoreText.setText("0");
+        Text menuText = new Text();
+        root.getChildren().add(menuText);
+        menuText.relocate(720, 60);
+        menuText.setFont(Font.font(13));
+        menuText.setText("Press 'ESC' for main menu");
 
         randomFillNumber(1);
         randomFillNumber(1);
@@ -344,6 +351,9 @@ class GameScene {
                                 score = 0;
                             }
                         }
+                    }
+                    if (key.getCode() == KeyCode.ESCAPE){
+                        primaryStage.setScene(menuScene);
                     }
                 });
             });
