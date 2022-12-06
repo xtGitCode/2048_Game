@@ -58,7 +58,7 @@ public class LoginController {
             String password;
             username = enterUsername.getText().toString();
             password = enterPassword.getText().toString();
-            if (Account.accountHaveBeenExist(username)==null){
+            if (Account.accountHaveBeenExist(username)==null){ //no record
                 loginMessageLabel.setText("Incorrect username. Please try again.");
             } else{
                 if (Account.accountHaveBeenExist(username).getPassword().equals(password)){

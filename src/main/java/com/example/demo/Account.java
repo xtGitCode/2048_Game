@@ -1,8 +1,6 @@
 package com.example.demo;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -45,7 +43,6 @@ public class Account implements Comparable<Account> {
             }
         }
         return null;
-
     }
 
     static Account makeNewAccount(String userName, String password) throws IOException {
@@ -54,9 +51,9 @@ public class Account implements Comparable<Account> {
         sb.append(password + "\n");
 
         File file = new File("users.txt");
-        FileWriter W = new FileWriter(file,true);
-        W.append(sb.toString());
-        W.close();
+        BufferedWriter bw = new BufferedWriter(new FileWriter(file, true));
+        bw.write(sb.toString());
+        bw.close();
 
         Account account = new Account(userName,password); //add to arraylist
         accounts.add(account);
@@ -70,7 +67,8 @@ public class Account implements Comparable<Account> {
             while (s.hasNextLine()) {
                 String userName = s.nextLine();
                 String password = s.nextLine();
-                makeNewAccount(userName, password);
+                Account account = new Account(userName,password); //add to arraylist
+                accounts.add(account);
             }
             s.close();
         }
