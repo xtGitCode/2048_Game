@@ -28,6 +28,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+        Account.createdAccounts("users.txt"); //Initialize existing accounts when program starts
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("index.fxml"));
         Scene menuScene = new Scene(fxmlLoader.load(), WIDTH, HEIGHT);
         Group gameRoot = new Group();

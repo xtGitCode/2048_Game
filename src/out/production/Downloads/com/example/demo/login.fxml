@@ -10,48 +10,57 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
-<Pane xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.Controller">
+<Pane xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.LoginController">
    <children>
-      <AnchorPane prefHeight="500.0" prefWidth="500.0">
+      <AnchorPane prefHeight="780.0" prefWidth="780.0">
          <children>
-            <ImageView fitHeight="500.0" fitWidth="500.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="780.0" fitWidth="780.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="Images/loginBg.png" />
+                  <Image url="@Images/loginBg.png" />
                </image>
             </ImageView>
-            <Label layoutX="50.0" layoutY="161.0" prefHeight="50.0" prefWidth="184.0" text="LOGIN" textFill="#a48d65">
+            <Label layoutX="46.0" layoutY="246.0" prefHeight="50.0" prefWidth="184.0" text="LOGIN" textFill="#a48d65">
                <font>
-                  <Font name="Montserrat SemiBold" size="29.0" />
+                  <Font name="Montserrat SemiBold" size="41.0" />
                </font>
             </Label>
-            <Label layoutX="53.0" layoutY="218.0" prefHeight="38.0" prefWidth="174.0" text="Username" textFill="#bb831c">
+            <Label layoutX="100.0" layoutY="325.0" prefHeight="38.0" prefWidth="174.0" text="Username" textFill="#bb831c">
                <font>
-                  <Font name="Montserrat SemiBold" size="16.0" />
+                  <Font name="Montserrat SemiBold" size="22.0" />
                </font>
             </Label>
-            <TextField fx:id="enterUsername" layoutX="53.0" layoutY="250.0" prefHeight="30.0" prefWidth="362.0" promptText="Username" />
-            <Label layoutX="54.0" layoutY="292.0" prefHeight="38.0" prefWidth="174.0" text="Password" textFill="#bb831c">
+            <TextField fx:id="enterUsername" layoutX="100.0" layoutY="364.0" prefHeight="51.0" prefWidth="534.0" promptText="Username" />
+            <Label layoutX="100.0" layoutY="445.0" prefHeight="38.0" prefWidth="174.0" text="Password" textFill="#bb831c">
                <font>
-                  <Font name="Montserrat SemiBold" size="16.0" />
+                  <Font name="Montserrat SemiBold" size="22.0" />
                </font>
             </Label>
-            <PasswordField fx:id="enterPassword" layoutX="53.0" layoutY="322.0" prefHeight="30.0" prefWidth="362.0" promptText="Password" />
-            <Button fx:id="loginButton" layoutX="141.0" layoutY="398.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="195.0" style="-fx-background-color: #ff914d;" text="Login" textFill="#fffbe6">
+            <PasswordField fx:id="enterPassword" layoutX="100.0" layoutY="484.0" prefHeight="51.0" prefWidth="534.0" promptText="Password" />
+            <Button fx:id="loginButton" layoutX="217.0" layoutY="593.0" mnemonicParsing="false" onAction="#loginAccButton" prefHeight="38.0" prefWidth="299.0" style="-fx-background-color: #ff914d;" text="Login" textFill="#fffbe6">
                <font>
-                  <Font name="Montserrat SemiBold" size="13.0" />
+                  <Font name="Montserrat SemiBold" size="18.0" /> 
                </font>
             </Button>
-            <Button fx:id="cancelButton" layoutX="141.0" layoutY="435.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="195.0" style="-fx-background-color: #ff914d;" text="Cancel" textFill="#fffbe6">
+            <Button fx:id="cancelButton" layoutX="218.0" layoutY="647.0" mnemonicParsing="false" onAction="#cancelButton" prefHeight="38.0" prefWidth="299.0" style="-fx-background-color: #ff914d;" text="Cancel" textFill="#fffbe6">
                <font>
-                  <Font name="Montserrat SemiBold" size="13.0" />
+                  <Font name="Montserrat SemiBold" size="18.0" />
                </font>
             </Button>
-            <Label layoutX="122.0" layoutY="352.0" prefHeight="38.0" prefWidth="212.0" text="Invalid Login. Please try again." textAlignment="RIGHT" textFill="#ff3535">
+            <Label fx:id="loginMessageLabel" layoutX="57.0" layoutY="544.0" prefHeight="38.0" prefWidth="650.0" textAlignment="CENTER" textFill="#ff3535">
                <font>
-                  <Font name="Montserrat SemiBold Italic" size="13.0" />
+                  <Font name="Montserrat SemiBold Italic" size="16.0" />
                </font>
             </Label>
+            <Label layoutX="263.0" layoutY="704.0" prefHeight="38.0" prefWidth="137.0" text="Not a user? " textFill="#bb831c">
+               <font>
+                  <Font name="Montserrat SemiBold" size="20.0" />
+               </font>
+            </Label>
+            <Button layoutX="382.0" layoutY="705.0" mnemonicParsing="false" onAction="#switchSignUp" style="-fx-background-color: transparent; -fx-cursor: hand;" text="Sign Up!" textFill="#3b88ec" underline="true">
+               <font>
+                  <Font name="Montserrat SemiBold" size="18.0" />
+               </font>
+            </Button>
          </children>
       </AnchorPane>
    </children>

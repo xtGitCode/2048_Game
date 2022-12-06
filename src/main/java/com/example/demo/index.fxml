@@ -24,12 +24,12 @@
             <Font name="Montserrat SemiBold Italic" size="24.0" />
          </font>
       </Button>
-      <Button layoutX="275.0" layoutY="339.0" onAction="#startButton" prefHeight="58.0" prefWidth="230.0" style="-fx-background-color: #ff5757;" text="Login" textFill="#fffafa">
+      <Button layoutX="275.0" layoutY="339.0" onAction="#loginPageButton" prefHeight="58.0" prefWidth="230.0" style="-fx-background-color: #ff5757;" text="Login" textFill="#fffafa">
          <font>
             <Font name="Montserrat SemiBold" size="24.0" />
          </font>
       </Button>
-      <Button layoutX="275.0" layoutY="499.0" onAction="#startButton" prefHeight="58.0" prefWidth="230.0" style="-fx-background-color: #ff5757;" text="Leaderboard" textFill="WHITE">
+      <Button layoutX="275.0" layoutY="499.0" onAction="#leaderboardButton" prefHeight="58.0" prefWidth="230.0" style="-fx-background-color: #ff5757;" text="Leaderboard" textFill="WHITE">
          <font>
             <Font name="Montserrat SemiBold" size="24.0" />
          </font>
