@@ -58,8 +58,6 @@ class GameScene {
             }
         }
 
-
-
         Text text;
         Random random = new Random();
         boolean putTwo = true;

@@ -41,12 +41,12 @@
                   <Font name="Montserrat SemiBold" size="18.0" /> 
                </font>
             </Button>
-            <Button fx:id="cancelButton" layoutX="218.0" layoutY="647.0" mnemonicParsing="false" onAction="#cancelButton" prefHeight="38.0" prefWidth="299.0" style="-fx-background-color: #ff914d;" text="Cancel" textFill="#fffbe6">
+            <Button fx:id="cancelButton" layoutX="218.0" layoutY="647.0" mnemonicParsing="false" onAction="#returnMenuButton" prefHeight="38.0" prefWidth="299.0" style="-fx-background-color: #ff914d;" text="Cancel" textFill="#fffbe6">
                <font>
                   <Font name="Montserrat SemiBold" size="18.0" />
                </font>
             </Button>
-            <Label fx:id="loginMessageLabel" layoutX="57.0" layoutY="544.0" prefHeight="38.0" prefWidth="650.0" textAlignment="CENTER" textFill="#ff3535">
+            <Label fx:id="loginMessageLabel" alignment="CENTER" layoutX="57.0" layoutY="544.0" prefHeight="38.0" prefWidth="650.0" textAlignment="CENTER" textFill="#ff3535">
                <font>
                   <Font name="Montserrat SemiBold Italic" size="16.0" />
                </font>

@@ -5,27 +5,28 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Account implements Comparable<Account> {
-    private long score = 0;
+    private long highScore = 0;
     private String userName ;
     private String password ;
     private static ArrayList<Account> accounts = new ArrayList<>();
 
-    public Account(String userName, String password){
+    public Account(String userName, String password, String highScore){
         this.userName=userName;
         this.password=password;
+        this.highScore=Long.parseLong(highScore);
     }
 
     @Override
     public int compareTo(Account o) {
-        return Long.compare(o.getScore(), score);
+        return Long.compare(o.getScore(), highScore);
     }
 
     public void addToScore(long score) {
-        this.score += score;
+        this.highScore += score;
     }
 
     private long getScore() {
-        return score;
+        return highScore;
     }
 
     private String getUserName() {
@@ -45,9 +46,10 @@ public class Account implements Comparable<Account> {
         return null;
     }
 
-    static Account makeNewAccount(String userName, String password) throws IOException {
+    static Account makeNewAccount(String userName, String password, long highScore) throws IOException {
+        highScore = Long.parseLong(Long.toString(highScore));
         StringBuilder sb = new StringBuilder();
-        sb.append(userName + "\n");
+        sb.append(userName + "," + highScore + "\n");
         sb.append(password + "\n");
 
         File file = new File("users.txt");
@@ -55,7 +57,7 @@ public class Account implements Comparable<Account> {
         bw.write(sb.toString());
         bw.close();
 
-        Account account = new Account(userName,password); //add to arraylist
+        Account account = new Account(userName,password,"0"); //add to arraylist
         accounts.add(account);
         return account;
     }
@@ -65,9 +67,12 @@ public class Account implements Comparable<Account> {
         if (file.exists()) {
             Scanner s = new Scanner(new File(f));
             while (s.hasNextLine()) {
-                String userName = s.nextLine();
+                String str = s.nextLine();
+                String[] arrofStr = str.split(",");
+                String userName = arrofStr[0];
+                String highScore = arrofStr[1];
                 String password = s.nextLine();
-                Account account = new Account(userName,password); //add to arraylist
+                Account account = new Account(userName,password,highScore); //add to arraylist
                 accounts.add(account);
             }
             s.close();
