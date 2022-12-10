@@ -11,6 +11,9 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 public class LoginController {
+    public static String username;
+    public String password;
+    public static long highScore;
     static final int WIDTH = 780;
     static final int HEIGHT = 780;
     @FXML
@@ -34,8 +37,6 @@ public class LoginController {
     @FXML
     public void signupAccButton(ActionEvent event) throws Exception{
         if (enterUsername.getText().isBlank() == false && enterPassword.getText().isBlank() == false){
-            String username;
-            String password;
             username = enterUsername.getText().toString();
             password = enterPassword.getText().toString();
             if (Account.accountHaveBeenExist(username)==null){ //unique account
@@ -51,8 +52,6 @@ public class LoginController {
     @FXML
     public void loginAccButton(ActionEvent event) throws Exception{
         if (enterUsername.getText().isBlank() == false && enterPassword.getText().isBlank() == false){
-            String username;
-            String password;
             username = enterUsername.getText().toString();
             password = enterPassword.getText().toString();
             if (Account.accountHaveBeenExist(username)==null){ //no record
@@ -60,6 +59,9 @@ public class LoginController {
             } else{
                 if (Account.accountHaveBeenExist(username).getPassword().equals(password)){
                     FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("index.fxml"));
+                    highScore = Account.accountHaveBeenExist(username).getScore();
+                    Account curAccount = new Account(username, password, Long.toString(highScore));
+
                     Scene indexScene = new Scene(fxmlLoader.load(), WIDTH, HEIGHT);
                     Controller Controller = fxmlLoader.getController();
                     Controller.welcomeLabel.setText("Welcome " + username + "!");

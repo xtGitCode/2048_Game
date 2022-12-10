@@ -15,35 +15,40 @@
 
          </image>
       </ImageView>
-      <Button fx:id="playButton" layoutX="275.0" layoutY="419.0" onAction="#startButton" prefHeight="58.0" prefWidth="230.0" style="-fx-background-color: #ff5757;" text="Play as guest" textFill="WHITE">
+      <Button fx:id="playButton" layoutX="275.0" layoutY="479.0" onAction="#startButton" prefHeight="58.0" prefWidth="230.0" style="-fx-background-color: #ff5757;" text="Play as guest" textFill="WHITE">
          <font>
             <Font name="Montserrat SemiBold" size="24.0" />
          </font>
       </Button>
-      <Button fx:id="quitButton" layoutX="275.0" layoutY="579.0" onAction="#quitButton" prefHeight="58.0" prefWidth="230.0" style="-fx-background-color: #ff5757;" text="Quit" textFill="WHITE">
+      <Button fx:id="quitButton" layoutX="275.0" layoutY="639.0" onAction="#quitButton" prefHeight="58.0" prefWidth="230.0" style="-fx-background-color: #ff5757;" text="Quit" textFill="WHITE">
          <font>
             <Font name="Montserrat SemiBold Italic" size="24.0" />
          </font>
       </Button>
-      <Button fx:id="loginButton" layoutX="275.0" layoutY="339.0" onAction="#loginPageButton" prefHeight="58.0" prefWidth="230.0" style="-fx-background-color: #ff5757;" text="Login" textFill="#fffafa">
+      <Button fx:id="loginButton" layoutX="275.0" layoutY="390.0" onAction="#loginPageButton" prefHeight="58.0" prefWidth="230.0" style="-fx-background-color: #ff5757;" text="Login" textFill="#fffafa">
          <font>
             <Font name="Montserrat SemiBold" size="24.0" />
          </font>
       </Button>
-      <Button fx:id="leadButton" layoutX="275.0" layoutY="499.0" onAction="#leaderboardButton" prefHeight="58.0" prefWidth="230.0" style="-fx-background-color: #ff5757;" text="Leaderboard" textFill="WHITE">
+      <Button fx:id="leadButton" layoutX="275.0" layoutY="559.0" onAction="#leaderboardButton" prefHeight="58.0" prefWidth="230.0" style="-fx-background-color: #ff5757;" text="Leaderboard" textFill="WHITE">
          <font>
             <Font name="Montserrat SemiBold" size="24.0" />
          </font>
       </Button>
-      <Label fx:id="welcomeLabel" alignment="CENTER" layoutX="182.0" layoutY="282.0" prefHeight="18.0" prefWidth="434.0">
+      <Label fx:id="welcomeLabel" alignment="CENTER" layoutX="173.0" layoutY="65.0" prefHeight="18.0" prefWidth="434.0">
          <font>
             <Font name="Montserrat SemiBold" size="28.0" />
          </font>
       </Label>
-      <Button fx:id="logoutButton" layoutX="275.0" layoutY="339.0" onAction="#logoutButton" prefHeight="58.0" prefWidth="230.0" style="-fx-background-color: #ff5757;" text="Logout" textFill="#fffafa" visible="false">
+      <Button fx:id="logoutButton" layoutX="275.0" layoutY="390.0" onAction="#logoutButton" prefHeight="58.0" prefWidth="230.0" style="-fx-background-color: #ff5757;" text="Logout" textFill="#fffafa" visible="false">
          <font>
             <Font name="Montserrat SemiBold" size="24.0" />
          </font>
       </Button>
+      <ImageView fitHeight="273.0" fitWidth="307.0" layoutX="254.0" layoutY="-14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Images/duck.gif" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

@@ -22,6 +22,8 @@ public class Cell {
 
     Cell(double x, double y, double scale, Group root) {
         rectangle = new Rectangle();
+        rectangle.setArcHeight(20.0d);
+        rectangle.setArcWidth(20.0d);
         rectangle.setX(x);
         rectangle.setY(y);
         rectangle.setHeight(scale);

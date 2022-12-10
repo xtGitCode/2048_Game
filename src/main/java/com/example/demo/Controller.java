@@ -7,14 +7,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Optional;
 
 public class Controller{
     static final int WIDTH = 780;
@@ -44,6 +42,14 @@ public class Controller{
     public Button leadButton;
 
     @FXML
+    /*public void startButton(ActionEvent event) throws Exception{
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("gameMode.fxml"));
+        Scene gameModeScene = new Scene(fxmlLoader.load(), WIDTH, HEIGHT);
+        Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        primaryStage.setScene(gameModeScene);
+        primaryStage.show();
+    }*/
+
     public void startButton(ActionEvent event) throws Exception{
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("index.fxml"));
         Scene menuScene = new Scene(fxmlLoader.load(), WIDTH, HEIGHT);
@@ -53,7 +59,7 @@ public class Controller{
         Scene gameScene = new Scene(gameRoot, WIDTH, HEIGHT, Color.rgb(189, 177, 92)); //bg color game
         setGameScene(gameScene);
         GameScene game = new GameScene();
-        game.game(gameScene, gameRoot, primaryStage, endGameScene, endgameRoot, menuScene);
+        game.game(gameScene, gameRoot, primaryStage, endGameScene, endgameRoot, menuScene, LoginController.highScore);
         primaryStage.setScene(gameScene);
         primaryStage.show();
     }

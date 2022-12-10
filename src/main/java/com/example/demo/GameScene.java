@@ -1,22 +1,27 @@
 package com.example.demo;
 
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-import java.io.IOException;
+import java.io.*;
 import java.util.Random;
+import java.util.Scanner;
 
 class GameScene {
     private final static int distanceBetweenCells = 10;
-    private static int HEIGHT = 700; //height of tiles
+    private static int HEIGHT = 620; //size of tiles
     private static int n = 4;
     private static double LENGTH = (HEIGHT - ((n + 1) * distanceBetweenCells)) / (double) n;
     private TextMaker textMaker = TextMaker.getSingleInstance();
@@ -293,30 +298,80 @@ class GameScene {
         score += cellNumber * 2;
     }
 
-    void game(Scene gameScene, Group root, Stage primaryStage, Scene endGameScene, Group endGameRoot, Scene menuScene) {
+    public void updateScore(long oldScore, long newScore) throws IOException {
+        if (newScore > oldScore) {
+            File file = new File("users.txt");
+            String data = "";
+            String stringToReplace = LoginController.username + "," + oldScore;
+            String replaceWith = LoginController.username + "," + newScore;
+            String line;
+            Scanner s = new Scanner(new File("users.txt"));
+            while (s.hasNextLine()) {
+                line = s.nextLine();
+                if (line.contains(stringToReplace))
+                {
+                    line = line.replace(stringToReplace, replaceWith);
+                }
+                data = data.concat(line + "\n");
+            }
+            s.close();
+            BufferedWriter out = new BufferedWriter(new FileWriter(file));
+            out.write(data);
+            out.close();
+        }
+    }
+
+    void game(Scene gameScene, Group root, Stage primaryStage, Scene endGameScene, Group endGameRoot, Scene menuScene, long highScore) {
         this.root = root;
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
-                cells[i][j] = new Cell((j) * LENGTH + (j + 1) * distanceBetweenCells,
-                        (i) * LENGTH + (i + 1) * distanceBetweenCells, LENGTH, root);
+                cells[i][j] = new Cell((j + 0.5) * LENGTH + (j + 1) * distanceBetweenCells,
+                        (i + 1) * LENGTH + (i + 1) * distanceBetweenCells, LENGTH, root);
             }
         }
+        long oldScore = highScore;
 
         Text text = new Text();
         root.getChildren().add(text);
         text.setText("SCORE :");
-        text.setFont(Font.font(30));
-        text.relocate(750, 100);
+        text.setFont(new Font("Montserrat SemiBold",30));
+        text.relocate(90, 90);
         Text scoreText = new Text();
         root.getChildren().add(scoreText);
-        scoreText.relocate(750, 150);
-        scoreText.setFont(Font.font(20));
+        scoreText.relocate(225, 106);
+        scoreText.setFont(new Font("Montserrat SemiBold",30));
         scoreText.setText("0");
+        Text highScoreText = new Text();
+        highScoreText.relocate(505, 106);
+        highScoreText.setFont(new Font("Montserrat SemiBold",30));
+        highScoreText.setText("BEST: " + highScore);
+        root.getChildren().add(highScoreText);
         Text menuText = new Text();
         root.getChildren().add(menuText);
-        menuText.relocate(720, 60);
-        menuText.setFont(Font.font(13));
+        menuText.relocate(90, 30);
+        menuText.setFont(new Font("Montserrat SemiBold",18));
         menuText.setText("Press 'ESC' for main menu");
+
+        Button saveButton = new Button();
+        saveButton.setFocusTraversable(false);
+        root.getChildren().add(saveButton);
+        saveButton.setText("Save Score");
+        saveButton.setFont(new Font("Montserrat SemiBold",25));
+        saveButton.relocate(130,30);
+        saveButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try {
+                    updateScore(oldScore,score);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                Alert a = new Alert(Alert.AlertType.NONE);
+                a.setAlertType(Alert.AlertType.INFORMATION);
+                a.setHeaderText("Score Saved");
+                a.show();
+            }
+        });
 
         randomFillNumber(1);
         randomFillNumber(1);
@@ -340,6 +395,10 @@ class GameScene {
                     }
                     if (isValid) {
                         scoreText.setText(score + ""); //scoring
+                        if(score>highScore){
+                            highScoreText.setText("BEST: " + score + "");
+                            LoginController.highScore = highScore;
+                        }
                         haveEmptyCell = GameScene.this.haveEmptyCell();
                         if (haveEmptyCell == -1) {
                             if (GameScene.this.canNotMove()) {
@@ -351,7 +410,16 @@ class GameScene {
                         }
                     }
                     if (key.getCode() == KeyCode.ESCAPE){
-                        primaryStage.setScene(menuScene);
+                        Alert a = new Alert(Alert.AlertType.NONE);
+                        a.setAlertType(Alert.AlertType.CONFIRMATION);
+                        a.setTitle("Return");
+                        a.setHeaderText("Quit to main menu and lose current progress?");
+                        a.setContentText("Are you sure?");
+                        a.showAndWait().ifPresent(response -> {
+                            if (response == ButtonType.OK) {
+                                primaryStage.setScene(menuScene);
+                            }
+                        });
                     }
                 });
             });

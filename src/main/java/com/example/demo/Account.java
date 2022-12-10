@@ -25,7 +25,7 @@ public class Account implements Comparable<Account> {
         this.highScore += score;
     }
 
-    private long getScore() {
+    protected long getScore() {
         return highScore;
     }
 

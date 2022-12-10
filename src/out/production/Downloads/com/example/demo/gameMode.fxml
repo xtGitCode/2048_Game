@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="780.0" prefWidth="780.0" style="-fx-background-color: #ff5757;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.gameModeController">
+   <children>
+      <ChoiceBox fx:id="boardSize" layoutX="137.0" layoutY="250.0" prefHeight="58.0" prefWidth="547.0" />
+      <Label layoutX="137.0" layoutY="179.0" text="Board Size" textFill="WHITE">
+         <font>
+            <Font name="Montserrat SemiBold" size="34.0" />
+         </font>
+      </Label>
+      <Label layoutX="137.0" layoutY="422.0" text="Game Mode" textFill="WHITE">
+         <font>
+            <Font name="Montserrat SemiBold" size="34.0" />
+         </font>
+      </Label>
+      <Button fx:id="endlessButton" layoutX="137.0" layoutY="486.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="231.0" text="Endless Mode">
+         <font>
+            <Font name="Montserrat SemiBold" size="16.0" />
+         </font>
+      </Button>
+      <Button fx:id="timeButton" layoutX="390.0" layoutY="486.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="231.0" text="Timer Mode">
+         <font>
+            <Font name="Montserrat SemiBold" size="16.0" />
+         </font>
+      </Button>
+      <Label layoutX="165.0" layoutY="544.0" prefHeight="73.0" prefWidth="175.0" text="Score as many points as you can without filling up the board" textAlignment="CENTER" textFill="#f5e393" wrapText="true">
+         <font>
+            <Font name="Montserrat SemiBold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="418.0" layoutY="544.0" prefHeight="73.0" prefWidth="175.0" text="Score as many points as you can before the timer runs out!" textAlignment="CENTER" textFill="#f5e393" wrapText="true">
+         <font>
+            <Font name="Montserrat SemiBold" size="14.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
