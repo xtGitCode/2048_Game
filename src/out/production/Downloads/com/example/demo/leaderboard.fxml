@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="780.0" prefWidth="780.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.leadController">
+   <children>
+      <ImageView fitHeight="780.0" fitWidth="780.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Images/leaderboardBg.jpg" />
+         </image>
+      </ImageView>
+      <TableView fx:id="leaderboard" layoutX="85.0" layoutY="207.0" prefHeight="537.0" prefWidth="626.0">
+        <columns>
+          <TableColumn fx:id="rankCol" prefWidth="111.99996185302734" text="Ranking" />
+          <TableColumn fx:id="usernameCol" prefWidth="343.2000427246094" text="Username" />
+            <TableColumn fx:id="scoreCol" prefWidth="171.20001220703125" text="Score" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

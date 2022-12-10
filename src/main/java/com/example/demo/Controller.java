@@ -115,7 +115,11 @@ public class Controller{
 
     @FXML
     public void leaderboardButton(ActionEvent event) throws Exception{
-
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("leaderboard.fxml"));
+        Scene leadScene = new Scene(fxmlLoader.load(), WIDTH, HEIGHT);
+        Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        primaryStage.setScene(leadScene);
+        primaryStage.show();
     }
 
 }

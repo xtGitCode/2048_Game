@@ -8,7 +8,7 @@ public class Account implements Comparable<Account> {
     private long highScore = 0;
     private String userName ;
     private String password ;
-    private static ArrayList<Account> accounts = new ArrayList<>();
+    public static ArrayList<Account> accounts = new ArrayList<>();
 
     public Account(String userName, String password, String highScore){
         this.userName=userName;
@@ -29,7 +29,7 @@ public class Account implements Comparable<Account> {
         return highScore;
     }
 
-    private String getUserName() {
+    public String getUserName() {
         return userName;
     }
 
@@ -63,6 +63,7 @@ public class Account implements Comparable<Account> {
     }
 
     public static void createdAccounts(String f) throws IOException {
+        accounts.clear();
         File file = new File(f);
         if (file.exists()) {
             Scanner s = new Scanner(new File(f));
@@ -76,7 +77,24 @@ public class Account implements Comparable<Account> {
                 accounts.add(account);
             }
             s.close();
+            sortAccounts(accounts);
         }
 
+    }
+
+    public static void sortAccounts(ArrayList<Account> accounts){
+        boolean sorted = false;
+        Account temp;
+        while(!sorted) {
+            sorted = true;
+            for (int i = 0; i < accounts.size() - 1; i++) {
+                if (accounts.get(i).getScore() < accounts.get(i+1).getScore()) {
+                    temp = accounts.get(i);
+                    accounts.set(i, accounts.get(i + 1));
+                    accounts.set(i + 1, temp);
+                    sorted = false;
+                }
+            }
+        }
     }
 }

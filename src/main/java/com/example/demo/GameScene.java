@@ -356,8 +356,8 @@ class GameScene {
         saveButton.setFocusTraversable(false);
         root.getChildren().add(saveButton);
         saveButton.setText("Save Score");
-        saveButton.setFont(new Font("Montserrat SemiBold",25));
-        saveButton.relocate(130,30);
+        saveButton.setFont(new Font("Montserrat SemiBold",20));
+        saveButton.relocate(500,25);
         saveButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
