@@ -42,15 +42,15 @@ public class Controller{
     public Button leadButton;
 
     @FXML
-    /*public void startButton(ActionEvent event) throws Exception{
+    public void startButton(ActionEvent event) throws Exception{
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("gameMode.fxml"));
         Scene gameModeScene = new Scene(fxmlLoader.load(), WIDTH, HEIGHT);
         Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         primaryStage.setScene(gameModeScene);
         primaryStage.show();
-    }*/
+    }
 
-    public void startButton(ActionEvent event) throws Exception{
+    /*public void startButton(ActionEvent event) throws Exception{
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("index.fxml"));
         Scene menuScene = new Scene(fxmlLoader.load(), WIDTH, HEIGHT);
         Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -62,7 +62,7 @@ public class Controller{
         game.game(gameScene, gameRoot, primaryStage, endGameScene, endgameRoot, menuScene, LoginController.highScore);
         primaryStage.setScene(gameScene);
         primaryStage.show();
-    }
+    }*/
 
     @FXML
     public void quitButton() {

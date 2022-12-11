@@ -18,16 +18,19 @@ import javafx.stage.Stage;
 import java.io.*;
 import java.util.Random;
 import java.util.Scanner;
+import java.util.Timer;
+import java.util.TimerTask;
 
 class GameScene {
     private final static int distanceBetweenCells = 10;
     private static int HEIGHT = 620; //size of tiles
-    private static int n = 4;
+    private static int n = 8;
     private static double LENGTH = (HEIGHT - ((n + 1) * distanceBetweenCells)) / (double) n;
     private TextMaker textMaker = TextMaker.getSingleInstance();
     private Cell[][] cells = new Cell[n][n];
     private Group root;
     private long score = 0;
+    static int counter = 30;
 
     static void setN(int number) {
         n = number;
@@ -321,15 +324,69 @@ class GameScene {
         }
     }
 
-    void game(Scene gameScene, Group root, Stage primaryStage, Scene endGameScene, Group endGameRoot, Scene menuScene, long highScore) {
+    void game(Scene gameScene, Group root, Stage primaryStage, Scene menuScene, long highScore, int size, boolean timerMode) {
         this.root = root;
+        setN(size);
+        double scale;
+        if (n==4){
+            scale = 1;
+        } else if (n==6){
+            scale = 1.5;
+        } else{
+            scale = 2;
+        }
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 cells[i][j] = new Cell((j + 0.5) * LENGTH + (j + 1) * distanceBetweenCells,
-                        (i + 1) * LENGTH + (i + 1) * distanceBetweenCells, LENGTH, root);
+                        (i + scale) * LENGTH + (i + 1) * distanceBetweenCells, LENGTH, root);
             }
         }
         long oldScore = highScore;
+
+        if (timerMode == true){
+            Text timerText = new Text();
+            root.getChildren().add(timerText);
+            timerText.setFont(new Font("Montserrat SemiBold",30));
+            timerText.relocate(400, 30);
+
+            Timer timer = new Timer();
+            TimerTask timerTask = new TimerTask() {
+                @Override
+                public void run() {
+                    Platform.runLater(() -> {
+                        timerText.setText(counter + "");
+                        --counter;
+                        if (counter == 0) {
+                            timer.cancel();
+                            try {
+                                updateScore(highScore, score);
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                            Alert a = new Alert(Alert.AlertType.NONE);
+                            a.setAlertType(Alert.AlertType.INFORMATION);
+                            a.setHeaderText("Score Saved");
+                            a.show();
+                            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("endGame.fxml"));
+                            Scene endScene = null;
+                            try {
+                                endScene = new Scene(fxmlLoader.load(), 780, 780);
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                            EndGameController endController = fxmlLoader.getController();
+                            endController.curScore.setText(score + "");
+                            endController.bestScore.setText(highScore + "");
+                            primaryStage.setScene(endScene);
+                            primaryStage.show();
+                            root.getChildren().clear();
+                            score = 0;
+                        }
+                    });
+                }
+            };
+            timer.schedule(timerTask,0,1000);
+        }
 
         Text text = new Text();
         root.getChildren().add(text);
@@ -403,10 +460,14 @@ class GameScene {
                         if (haveEmptyCell == -1) {
                             if (GameScene.this.canNotMove()) {
                                 try {
-                                    updateScore(score, highScore);
+                                    updateScore(highScore, score);
                                 } catch (IOException e) {
                                     e.printStackTrace();
                                 }
+                                Alert a = new Alert(Alert.AlertType.NONE);
+                                a.setAlertType(Alert.AlertType.INFORMATION);
+                                a.setHeaderText("Score Saved");
+                                a.show();
                                 FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("endGame.fxml"));
                                 Scene endScene = null;
                                 try {

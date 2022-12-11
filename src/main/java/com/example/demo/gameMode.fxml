@@ -19,12 +19,12 @@
             <Font name="Montserrat SemiBold" size="34.0" />
          </font>
       </Label>
-      <Button fx:id="endlessButton" layoutX="137.0" layoutY="486.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="231.0" text="Endless Mode">
+      <Button fx:id="endlessButton" layoutX="137.0" layoutY="486.0" onAction="#endlessMode" mnemonicParsing="false" prefHeight="58.0" prefWidth="231.0" text="Endless Mode">
          <font>
             <Font name="Montserrat SemiBold" size="16.0" />
          </font>
       </Button>
-      <Button fx:id="timeButton" layoutX="390.0" layoutY="486.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="231.0" text="Timer Mode">
+      <Button fx:id="timeButton" layoutX="390.0" layoutY="486.0" onAction="#timerMode" mnemonicParsing="false" prefHeight="58.0" prefWidth="231.0" text="Timer Mode">
          <font>
             <Font name="Montserrat SemiBold" size="16.0" />
          </font>

@@ -7,7 +7,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="780.0" prefWidth="780.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.EndGameController">
    <children>
       <ImageView fitHeight="780.0" fitWidth="780.0" pickOnBounds="true" preserveRatio="true">
@@ -30,7 +29,7 @@
             <Font size="46.0" />
          </font>
       </Label>
-      <Button layoutX="336.0" layoutY="418.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="108.0" text="Menu" onAction="#returnMenu"/>
+      <Button layoutX="304.0" layoutY="97.0" mnemonicParsing="false" onAction="#returnMenu" prefHeight="32.0" prefWidth="170.0" text="Return to Main Menu" />
       <Label fx:id="curScore" layoutX="228.0" layoutY="488.0" textFill="WHITE">
          <font>
             <Font size="46.0" />
@@ -41,5 +40,6 @@
             <Font size="46.0" />
          </font>
       </Label>
+      <Button layoutX="304.0" layoutY="149.0" mnemonicParsing="false" onAction="#returnMenu" prefHeight="32.0" prefWidth="170.0" text="Quit " />
    </children>
 </AnchorPane>
