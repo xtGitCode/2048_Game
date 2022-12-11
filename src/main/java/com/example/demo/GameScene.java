@@ -402,8 +402,23 @@ class GameScene {
                         haveEmptyCell = GameScene.this.haveEmptyCell();
                         if (haveEmptyCell == -1) {
                             if (GameScene.this.canNotMove()) {
-                                primaryStage.setScene(endGameScene);
-                                EndGame.getInstance().endGameShow(endGameScene, endGameRoot, primaryStage, score);
+                                try {
+                                    updateScore(score, highScore);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
+                                FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("endGame.fxml"));
+                                Scene endScene = null;
+                                try {
+                                    endScene = new Scene(fxmlLoader.load(), 780, 780);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
+                                EndGameController endController = fxmlLoader.getController();
+                                endController.curScore.setText(score + "");
+                                endController.bestScore.setText(highScore + "");
+                                primaryStage.setScene(endScene);
+                                primaryStage.show();
                                 root.getChildren().clear();
                                 score = 0;
                             }

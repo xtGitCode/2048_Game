@@ -41,12 +41,10 @@ public class Main extends Application {
         Scene accountScene = new Scene(accountRoot, WIDTH, HEIGHT, Color.rgb(150, 20, 100, 0.2));
         Group getAccountRoot = new Group();
         Scene getAccountScene = new Scene(getAccountRoot, WIDTH, HEIGHT, Color.rgb(200, 20, 100, 0.2));
-        Group endgameRoot = new Group();
-        Scene endGameScene = new Scene(endgameRoot, WIDTH, HEIGHT, Color.rgb(250, 20, 100, 0.2));
+        FXMLLoader endGameLoader = new FXMLLoader(Main.class.getResource("endGame.fxml"));
+        Scene endGameScene = new Scene(endGameLoader.load(),WIDTH,HEIGHT);
         Group rankRoot = new Group();
         Scene rankScene = new Scene(rankRoot, WIDTH, HEIGHT, Color.rgb(250, 50, 120, 0.3));
-        BackgroundFill background_fill = new BackgroundFill(Color.rgb(120, 100, 100), CornerRadii.EMPTY, Insets.EMPTY);
-        Background background = new Background(background_fill);
 
         Rectangle backgroundOfMenu = new Rectangle(240, 120, Color.rgb(120, 120, 120, 0.2));
         backgroundOfMenu.setX(WIDTH / 2 - 120);

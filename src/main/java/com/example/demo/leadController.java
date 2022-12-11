@@ -22,9 +22,6 @@ public class leadController implements Initializable {
     private TableView<Account> leaderboard;
 
     @FXML
-    private TableColumn<String, String> rankCol;
-
-    @FXML
     private TableColumn<Account, Long> scoreCol;
 
     @FXML

@@ -60,12 +60,9 @@ public class LoginController {
                 if (Account.accountHaveBeenExist(username).getPassword().equals(password)){
                     FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("index.fxml"));
                     highScore = Account.accountHaveBeenExist(username).getScore();
-                    Account curAccount = new Account(username, password, Long.toString(highScore));
-
                     Scene indexScene = new Scene(fxmlLoader.load(), WIDTH, HEIGHT);
                     Controller Controller = fxmlLoader.getController();
                     Controller.welcomeLabel.setText("Welcome " + username + "!");
-                    Controller.loginButton.setVisible(false);
                     Controller.loginButton.setVisible(false);
                     Controller.logoutButton.setVisible(true);
                     Controller.playButton.setText("Play");
