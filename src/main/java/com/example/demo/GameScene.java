@@ -1,5 +1,7 @@
 package com.example.demo;
 
+import com.example.demo.controllers.EndGameController;
+import com.example.demo.controllers.LoginController;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -21,37 +23,37 @@ import java.util.Scanner;
 import java.util.Timer;
 import java.util.TimerTask;
 
-class GameScene {
+public class GameScene {
     private final static int distanceBetweenCells = 10;
-    private static int HEIGHT = 620; //size of tiles
-    private static int n = 8;
-    private static double LENGTH = (HEIGHT - ((n + 1) * distanceBetweenCells)) / (double) n;
-    private TextMaker textMaker = TextMaker.getSingleInstance();
-    private Cell[][] cells = new Cell[n][n];
+    private static final int HEIGHT = 620; //size of tiles
+    private static int boardSize = 8;
+    private static double LENGTH = (HEIGHT - ((boardSize + 1) * distanceBetweenCells)) / (double) boardSize;
+    private final TextMaker textMaker = TextMaker.getSingleInstance();
+    private Cell[][] cells = new Cell[boardSize][boardSize];
     private Group root;
     private long score = 0;
     static int counter = 30;
 
     static void setN(int number) {
-        n = number;
-        LENGTH = (HEIGHT - ((n + 1) * distanceBetweenCells)) / (double) n;
+        boardSize = number;
+        LENGTH = (HEIGHT - ((boardSize + 1) * distanceBetweenCells)) / (double) boardSize;
     }
 
     static double getLENGTH() {
         return LENGTH;
     }
 
-    private void randomFillNumber(int turn) {
-        Cell[][] emptyCells = new Cell[n][n];
+    private void randomFillNumber() {
+        Cell[][] emptyCells = new Cell[boardSize][boardSize];
         int a = 0;
         int b = 0;
         int aForBound=0,bForBound=0;
         outer:
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
+        for (int i = 0; i < boardSize; i++) {
+            for (int j = 0; j < boardSize; j++) {
                 if (cells[i][j].getNumber() == 0) { //check if cells are empty
                     emptyCells[a][b] = cells[i][j];
-                    if (b < n-1) {
+                    if (b < boardSize-1) {
                         bForBound=b;
                         b++;
 
@@ -59,7 +61,7 @@ class GameScene {
                         aForBound=a;
                         a++;
                         b = 0;
-                        if(a==n)
+                        if(a==boardSize)
                             break outer;
                     }
                 }
@@ -88,8 +90,8 @@ class GameScene {
     }
 
     private int haveEmptyCell() {
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
+        for (int i = 0; i < boardSize; i++) {
+            for (int j = 0; j < boardSize; j++) {
                 if (cells[i][j].getNumber() == 0)
                     return 1; //empty
                 if(cells[i][j].getNumber() == 2048)
@@ -103,7 +105,7 @@ class GameScene {
         int haveEmptyCell;
         haveEmptyCell = GameScene.this.haveEmptyCell();
         if(haveEmptyCell==1) {
-            GameScene.this.randomFillNumber(2);
+            GameScene.this.randomFillNumber();
         }
     }
 
@@ -122,25 +124,25 @@ class GameScene {
         }
         coordinate = j;
         if (direct == 'r') {
-            for (int k = j + 1; k <= n - 1; k++) {
+            for (int k = j + 1; k <= boardSize - 1; k++) {
                 if (cells[i][k].getNumber() != 0) {
                     coordinate = k - 1;
                     break;
-                } else if (k == n - 1) {
-                    coordinate = n - 1;
+                } else if (k == boardSize - 1) {
+                    coordinate = boardSize - 1;
                 }
             }
             return coordinate;
         }
         coordinate = i;
         if (direct == 'd') {
-            for (int k = i + 1; k <= n - 1; k++) {
+            for (int k = i + 1; k <= boardSize - 1; k++) {
                 if (cells[k][j].getNumber() != 0) {
                     coordinate = k - 1;
                     break;
 
-                } else if (k == n - 1) {
-                    coordinate = n - 1;
+                } else if (k == boardSize - 1) {
+                    coordinate = boardSize - 1;
                 }
             }
             return coordinate;
@@ -162,13 +164,13 @@ class GameScene {
 
     private void moveLeft() {
         int moved = 0; // moved var to check whether cells moved
-        for (int i = 0; i < n; i++) {
-            for (int j = 1; j < n; j++) {
+        for (int i = 0; i < boardSize; i++) {
+            for (int j = 1; j < boardSize; j++) {
                 if (cells[i][j].getNumber() != 0) { //added this if loop to ignore empty cells
                     moved += moveHorizontally(i, j, passDestination(i, j, 'l'), -1);
                 }
             }
-            for (int j = 0; j < n; j++) {
+            for (int j = 0; j < boardSize; j++) {
                 cells[i][j].setModify(false);
             }
         }
@@ -179,13 +181,13 @@ class GameScene {
 
     private void moveRight() {
         int moved = 0;
-        for (int i = 0; i < n; i++) {
-            for (int j = n - 1; j >= 0; j--) {
+        for (int i = 0; i < boardSize; i++) {
+            for (int j = boardSize - 1; j >= 0; j--) {
                 if (cells[i][j].getNumber() != 0) {
                     moved += moveHorizontally(i, j, passDestination(i, j, 'r'), 1);
                 }
             }
-            for (int j = 0; j < n; j++) {
+            for (int j = 0; j < boardSize; j++) {
                 cells[i][j].setModify(false);
             }
         }
@@ -196,13 +198,13 @@ class GameScene {
 
     private void moveUp() {
         int moved = 0;
-        for (int j = 0; j < n; j++) {
-            for (int i = 1; i < n; i++) {
+        for (int j = 0; j < boardSize; j++) {
+            for (int i = 1; i < boardSize; i++) {
                 if (cells[i][j].getNumber() != 0) {
                     moved += moveVertically(i, j, passDestination(i, j, 'u'), -1);
                 }
             }
-            for (int i = 0; i < n; i++) {
+            for (int i = 0; i < boardSize; i++) {
                 cells[i][j].setModify(false);
             }
         }
@@ -214,13 +216,13 @@ class GameScene {
 
     private void moveDown() {
         int moved = 0;
-        for (int j = 0; j < n; j++) {
-            for (int i = n - 1; i >= 0; i--) {
+        for (int j = 0; j < boardSize; j++) {
+            for (int i = boardSize - 1; i >= 0; i--) {
                 if (cells[i][j].getNumber() != 0) {
                     moved += moveVertically(i, j, passDestination(i, j, 'd'), 1);
                 }
             }
-            for (int i = 0; i < n; i++) {
+            for (int i = 0; i < boardSize; i++) {
                 cells[i][j].setModify(false);
             }
         }
@@ -231,7 +233,7 @@ class GameScene {
     }
 
     private boolean isValidDesH(int i, int j, int des, int sign) {
-        if (des + sign < n && des + sign >= 0) {
+        if (des + sign < boardSize && des + sign >= 0) {
             if (cells[i][des + sign].getNumber() == cells[i][j].getNumber() && !cells[i][des + sign].getModify()
                     && cells[i][des + sign].getNumber() != 0) {
                 return true;
@@ -254,7 +256,7 @@ class GameScene {
     }
 
     private boolean isValidDesV(int i, int j, int des, int sign) {
-        if (des + sign < n && des + sign >= 0)
+        if (des + sign < boardSize && des + sign >= 0)
             if (cells[des + sign][j].getNumber() == cells[i][j].getNumber() && !cells[des + sign][j].getModify()
                     && cells[des + sign][j].getNumber() != 0) {
                 return true;
@@ -276,7 +278,7 @@ class GameScene {
     }
 
     private boolean haveSameNumber(int i, int j) {
-        if (i < n - 1 && j < n - 1) {
+        if (i < boardSize - 1 && j < boardSize - 1) {
             if (cells[i + 1][j].getNumber() == cells[i][j].getNumber())
                 return true;
             if (cells[i][j + 1].getNumber() == cells[i][j].getNumber())
@@ -286,8 +288,8 @@ class GameScene {
     }
 
     private boolean canNotMove() {
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
+        for (int i = 0; i < boardSize; i++) {
+            for (int j = 0; j < boardSize; j++) {
                 if (haveSameNumber(i, j)) {
                     return false;
                 }
@@ -324,26 +326,27 @@ class GameScene {
         }
     }
 
-    void game(Scene gameScene, Group root, Stage primaryStage, Scene menuScene, long highScore, int size, boolean timerMode) {
+    public void game(Scene gameScene, Group root, Stage primaryStage, Scene menuScene, long highScore, int size, boolean timerMode) {
         this.root = root;
-        setN(size);
-        double scale;
-        if (n==4){
+        setN(size); //set board size
+        double scale; // change board position based on size
+
+        if (boardSize==4){
             scale = 1;
-        } else if (n==6){
+        } else if (boardSize==6){
             scale = 1.5;
         } else{
             scale = 2;
         }
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
+
+        for (int i = 0; i < boardSize; i++) {
+            for (int j = 0; j < boardSize; j++) {
                 cells[i][j] = new Cell((j + 0.5) * LENGTH + (j + 1) * distanceBetweenCells,
                         (i + scale) * LENGTH + (i + 1) * distanceBetweenCells, LENGTH, root);
             }
         }
-        long oldScore = highScore;
 
-        if (timerMode == true){
+        if (timerMode){
             Text timerText = new Text();
             root.getChildren().add(timerText);
             timerText.setFont(new Font("Montserrat SemiBold",30));
@@ -367,7 +370,7 @@ class GameScene {
                             a.setAlertType(Alert.AlertType.INFORMATION);
                             a.setHeaderText("Score Saved");
                             a.show();
-                            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("endGame.fxml"));
+                            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("fxml/endGame.fxml"));
                             Scene endScene = null;
                             try {
                                 endScene = new Scene(fxmlLoader.load(), 780, 780);
@@ -419,7 +422,7 @@ class GameScene {
             @Override
             public void handle(ActionEvent event) {
                 try {
-                    updateScore(oldScore,score);
+                    updateScore(highScore,score);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -430,8 +433,8 @@ class GameScene {
             }
         });
 
-        randomFillNumber(1);
-        randomFillNumber(1);
+        randomFillNumber();
+        randomFillNumber();
 
         gameScene.addEventHandler(KeyEvent.KEY_PRESSED, key ->{
                 Platform.runLater(() -> {
@@ -468,7 +471,7 @@ class GameScene {
                                 a.setAlertType(Alert.AlertType.INFORMATION);
                                 a.setHeaderText("Score Saved");
                                 a.show();
-                                FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("endGame.fxml"));
+                                FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("fxml/endGame.fxml"));
                                 Scene endScene = null;
                                 try {
                                     endScene = new Scene(fxmlLoader.load(), 780, 780);

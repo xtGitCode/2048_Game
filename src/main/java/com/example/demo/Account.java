@@ -25,7 +25,7 @@ public class Account implements Comparable<Account> {
         this.highScore += score;
     }
 
-    protected long getScore() {
+    public long getScore() {
         return highScore;
     }
 
@@ -33,11 +33,11 @@ public class Account implements Comparable<Account> {
         return userName;
     }
 
-    protected String getPassword() {
+    public String getPassword() {
         return password;
     }
 
-    static Account accountHaveBeenExist(String userName){
+    public static Account accountHaveBeenExist(String userName){
         for(Account account : accounts){
             if(account.getUserName().equals(userName)){
                 return account;
@@ -46,7 +46,7 @@ public class Account implements Comparable<Account> {
         return null;
     }
 
-    static Account makeNewAccount(String userName, String password, long highScore) throws IOException {
+    public static Account makeNewAccount(String userName, String password, long highScore) throws IOException {
         highScore = Long.parseLong(Long.toString(highScore));
         StringBuilder sb = new StringBuilder();
         sb.append(userName + "," + highScore + "\n");

@@ -7,11 +7,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="780.0" prefWidth="780.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.Controller">
+<AnchorPane prefHeight="780.0" prefWidth="780.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.controllers.Controller">
    <children>
       <ImageView fitHeight="780.0" fitWidth="780.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@Images/menuBg.png" />
+            <Image url="@../Images/menuBg.png" />
 
          </image>
       </ImageView>
@@ -47,7 +47,7 @@
       </Button>
       <ImageView fitHeight="273.0" fitWidth="307.0" layoutX="254.0" layoutY="-14.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@Images/duck.gif" />
+            <Image url="@../Images/duck.gif" />
          </image>
       </ImageView>
    </children>

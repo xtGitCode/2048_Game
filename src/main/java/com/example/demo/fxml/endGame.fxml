@@ -7,11 +7,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="780.0" prefWidth="780.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.EndGameController">
+<AnchorPane prefHeight="780.0" prefWidth="780.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.controllers.EndGameController">
    <children>
       <ImageView fitHeight="780.0" fitWidth="780.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@Images/endBg.gif" />
+            <Image url="@../Images/endBg.gif" />
          </image>
       </ImageView>
       <Label layoutX="202.0" layoutY="276.0" text="End Game" textFill="#ff4e4e">

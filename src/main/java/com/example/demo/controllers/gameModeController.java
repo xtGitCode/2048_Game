@@ -1,5 +1,7 @@
-package com.example.demo;
+package com.example.demo.controllers;
 
+import com.example.demo.GameScene;
+import com.example.demo.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,8 +17,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import static com.example.demo.Controller.HEIGHT;
 import static com.example.demo.Main.WIDTH;
+import static com.example.demo.controllers.Controller.HEIGHT;
 
 public class gameModeController implements Initializable {
 
@@ -57,7 +59,7 @@ public class gameModeController implements Initializable {
         } else {
             size = 8;
         }
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("index.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("fxml/index.fxml"));
         Scene menuScene = new Scene(fxmlLoader.load(), WIDTH, HEIGHT);
         Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Group gameRoot = new Group();
@@ -83,7 +85,7 @@ public class gameModeController implements Initializable {
             size = 8;
         }
 
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("index.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("fxml/index.fxml"));
         Scene menuScene = new Scene(fxmlLoader.load(), WIDTH, HEIGHT);
         Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Group gameRoot = new Group();

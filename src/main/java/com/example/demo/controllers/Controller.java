@@ -1,5 +1,6 @@
-package com.example.demo;
+package com.example.demo.controllers;
 
+import com.example.demo.Main;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -43,7 +44,7 @@ public class Controller{
 
     @FXML
     public void startButton(ActionEvent event) throws Exception{
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("gameMode.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("fxml/gameMode.fxml"));
         Scene gameModeScene = new Scene(fxmlLoader.load(), WIDTH, HEIGHT);
         Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         primaryStage.setScene(gameModeScene);
@@ -80,7 +81,7 @@ public class Controller{
 
     @FXML
     public void loginPageButton(ActionEvent event) throws Exception{
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("login.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("fxml/login.fxml"));
         Scene loginScene = new Scene(fxmlLoader.load(), WIDTH, HEIGHT);
         Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         primaryStage.setScene(loginScene);
@@ -96,7 +97,7 @@ public class Controller{
         a.setContentText("Are you sure?");
         a.showAndWait().ifPresent(response -> {
             if (response == ButtonType.OK) {
-                FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("index.fxml"));
+                FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("fxml/index.fxml"));
                 loginButton.setVisible(true);
                 logoutButton.setVisible(false);
                 playButton.setText("Play as guest");
@@ -115,7 +116,7 @@ public class Controller{
 
     @FXML
     public void leaderboardButton(ActionEvent event) throws Exception{
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("leaderboard.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("fxml/leaderboard.fxml"));
         Scene leadScene = new Scene(fxmlLoader.load(), WIDTH, HEIGHT);
         Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         primaryStage.setScene(leadScene);

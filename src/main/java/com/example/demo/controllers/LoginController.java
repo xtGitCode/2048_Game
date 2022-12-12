@@ -1,11 +1,11 @@
-package com.example.demo;
+package com.example.demo.controllers;
 
-import javafx.application.Platform;
+import com.example.demo.Account;
+import com.example.demo.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
@@ -27,7 +27,7 @@ public class LoginController {
 
     @FXML
     public void returnMenuButton(ActionEvent event) throws Exception{
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("index.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("fxml/index.fxml"));
         Scene indexScene = new Scene(fxmlLoader.load(), WIDTH, HEIGHT);
         Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         primaryStage.setScene(indexScene);
@@ -58,7 +58,7 @@ public class LoginController {
                 loginMessageLabel.setText("Incorrect username. Please try again.");
             } else{
                 if (Account.accountHaveBeenExist(username).getPassword().equals(password)){
-                    FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("index.fxml"));
+                    FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("fxml/index.fxml"));
                     highScore = Account.accountHaveBeenExist(username).getScore();
                     Scene indexScene = new Scene(fxmlLoader.load(), WIDTH, HEIGHT);
                     Controller Controller = fxmlLoader.getController();
@@ -80,7 +80,7 @@ public class LoginController {
 
     @FXML
     public void switchSignUp(ActionEvent event) throws Exception{
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("signup.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("fxml/signup.fxml"));
         Scene signupScene = new Scene(fxmlLoader.load(), WIDTH, HEIGHT);
         Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         primaryStage.setScene(signupScene);
@@ -89,7 +89,7 @@ public class LoginController {
 
     @FXML
     public void switchLogin(ActionEvent event) throws Exception{
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("login.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("fxml/login.fxml"));
         Scene loginScene = new Scene(fxmlLoader.load(), WIDTH, HEIGHT);
         Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         primaryStage.setScene(loginScene);

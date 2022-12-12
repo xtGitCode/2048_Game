@@ -1,5 +1,6 @@
-package com.example.demo;
+package com.example.demo.controllers;
 
+import com.example.demo.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,16 +11,16 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-import static com.example.demo.Controller.HEIGHT;
-import static com.example.demo.Controller.WIDTH;
+import static com.example.demo.controllers.Controller.HEIGHT;
+import static com.example.demo.controllers.Controller.WIDTH;
 
 
 public class EndGameController {
     @FXML
-    protected Label curScore;
+    public Label curScore;
 
     @FXML
-    protected Label bestScore;
+    public Label bestScore;
 
     public static EndGameController singleInstance = null;
     public EndGameController(){
@@ -33,7 +34,7 @@ public class EndGameController {
 
     @FXML
     public void returnMenu(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("index.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("fxml/index.fxml"));
         Scene indexScene = new Scene(fxmlLoader.load(), WIDTH, HEIGHT);
         Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         primaryStage.setScene(indexScene);
