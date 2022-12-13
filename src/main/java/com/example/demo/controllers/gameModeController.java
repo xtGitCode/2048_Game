@@ -63,11 +63,12 @@ public class gameModeController implements Initializable {
         Scene menuScene = new Scene(fxmlLoader.load(), WIDTH, HEIGHT);
         Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Group gameRoot = new Group();
+
         setGameRoot(gameRoot);
-        Scene gameScene = new Scene(gameRoot, WIDTH, HEIGHT, Color.rgb(189, 177, 92)); //bg color game
+        Scene gameScene = new Scene(gameRoot, WIDTH, HEIGHT, Color.rgb(189, 177, 92));
         setGameScene(gameScene);
         GameScene game = new GameScene();
-        game.game(gameScene, gameRoot, primaryStage, menuScene, LoginController.highScore, size, false);
+        game.show(gameRoot, timer, primaryStage, LoginController.highScore, size);
         primaryStage.setScene(gameScene);
         primaryStage.show();
     }
@@ -94,7 +95,7 @@ public class gameModeController implements Initializable {
         Scene gameScene = new Scene(gameRoot, WIDTH, HEIGHT, Color.rgb(189, 177, 92));
         setGameScene(gameScene);
         GameScene game = new GameScene();
-        game.game(gameScene, gameRoot, primaryStage, menuScene, LoginController.highScore, size, timer);
+        game.show(gameRoot, timer, primaryStage, LoginController.highScore, size);
         primaryStage.setScene(gameScene);
         primaryStage.show();
     }

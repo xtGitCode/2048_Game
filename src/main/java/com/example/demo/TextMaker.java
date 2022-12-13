@@ -18,8 +18,8 @@ class TextMaker {
         return singleInstance;
     }
 
-    Text madeText(String input, double xCell, double yCell, Group root) {
-        double length = GameScene.getLENGTH();
+    static Text madeText(String input, double xCell, double yCell, Group root) {
+        double length = Board.LENGTH;
         double fontSize = (3 * length) / 7.0;
         Text text = new Text(input);
         text.setFont(Font.font(fontSize));
