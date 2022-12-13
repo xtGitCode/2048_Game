@@ -1,11 +1,14 @@
 package com.example.demo.controllers;
 
 import com.example.demo.Main;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
@@ -41,4 +44,17 @@ public class EndGameController {
         primaryStage.show();
     }
 
+    @FXML
+    public void quit() {
+        Alert a = new Alert(Alert.AlertType.NONE);
+        a.setAlertType(Alert.AlertType.CONFIRMATION);
+        a.setTitle("Quit Dialog");
+        a.setHeaderText("Quit from 2048");
+        a.setContentText("Are you sure?");
+        a.showAndWait().ifPresent(response -> {
+            if (response == ButtonType.OK) {
+                Platform.exit();
+            }
+        });
+    }
 }

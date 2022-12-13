@@ -15,7 +15,6 @@ public class Main extends Application {
 
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("fxml/index.fxml"));
         Scene menuScene = new Scene(fxmlLoader.load(), WIDTH, HEIGHT);
-
         primaryStage.setTitle("2048");      //Display main menu first when program runs
         primaryStage.setScene(menuScene);
         primaryStage.show();

@@ -7,39 +7,40 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
+
 <AnchorPane prefHeight="780.0" prefWidth="780.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.controllers.EndGameController">
    <children>
       <ImageView fitHeight="780.0" fitWidth="780.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../Images/endBg.gif" />
+            <Image url="@../Images/winBg.gif" />
          </image>
       </ImageView>
-      <Label layoutX="202.0" layoutY="276.0" text="End Game" textFill="#ff4e4e">
+      <Label layoutX="202.0" layoutY="274.0" text="YOU WIN" textFill="#4fff72">
          <font>
             <Font size="83.0" />
          </font>
       </Label>
-      <Label layoutX="92.0" layoutY="488.0" text="Score: " textFill="WHITE">
+      <Label layoutX="102.0" layoutY="498.0" text="Score: ">
          <font>
             <Font size="46.0" />
          </font>
       </Label>
-      <Label layoutX="92.0" layoutY="550.0" text="Best: " textFill="WHITE">
+      <Label layoutX="102.0" layoutY="560.0" text="Best: ">
          <font>
             <Font size="46.0" />
          </font>
       </Label>
-      <Button layoutX="304.0" layoutY="97.0" mnemonicParsing="false" onAction="#returnMenu" prefHeight="32.0" prefWidth="170.0" text="Return to Main Menu" />
-      <Label fx:id="curScore" layoutX="228.0" layoutY="488.0" textFill="WHITE">
+      <Label fx:id="curScore" layoutX="238.0" layoutY="498.0">
          <font>
             <Font size="46.0" />
          </font>
       </Label>
-      <Label fx:id="bestScore" layoutX="201.0" layoutY="550.0" textFill="WHITE">
+      <Label fx:id="bestScore" layoutX="211.0" layoutY="560.0">
          <font>
             <Font size="46.0" />
          </font>
       </Label>
-      <Button layoutX="304.0" layoutY="149.0" mnemonicParsing="false" onAction="#quit" prefHeight="32.0" prefWidth="170.0" text="Quit " />
+      <Button layoutX="53.0" layoutY="68.0" mnemonicParsing="false" onAction="#returnMenu" prefHeight="32.0" prefWidth="170.0" text="Return to Main Menu" />
+      <Button layoutX="53.0" layoutY="117.0" mnemonicParsing="false" onAction="#quit" prefHeight="32.0" prefWidth="170.0" text="Quit " />
    </children>
 </AnchorPane>

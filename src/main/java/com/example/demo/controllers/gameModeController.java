@@ -59,7 +59,6 @@ public class gameModeController implements Initializable {
         } else {
             size = 8;
         }
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("fxml/index.fxml"));
         Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Group gameRoot = new Group();
 

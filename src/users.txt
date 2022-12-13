@@ -2,7 +2,7 @@ xiaotuang,1172
 123
 elmo,0
 123
-test,0
+test,276
 123
 hello,2840
 123
