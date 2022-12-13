@@ -60,7 +60,6 @@ public class gameModeController implements Initializable {
             size = 8;
         }
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("fxml/index.fxml"));
-        Scene menuScene = new Scene(fxmlLoader.load(), WIDTH, HEIGHT);
         Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Group gameRoot = new Group();
 
@@ -68,7 +67,7 @@ public class gameModeController implements Initializable {
         Scene gameScene = new Scene(gameRoot, WIDTH, HEIGHT, Color.rgb(189, 177, 92));
         setGameScene(gameScene);
         GameScene game = new GameScene();
-        game.show(gameRoot, timer, primaryStage, LoginController.highScore, size);
+        game.show(gameScene, gameRoot, timer, primaryStage, LoginController.highScore, size);
         primaryStage.setScene(gameScene);
         primaryStage.show();
     }
@@ -87,7 +86,6 @@ public class gameModeController implements Initializable {
         }
 
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("fxml/index.fxml"));
-        Scene menuScene = new Scene(fxmlLoader.load(), WIDTH, HEIGHT);
         Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Group gameRoot = new Group();
 
@@ -95,7 +93,7 @@ public class gameModeController implements Initializable {
         Scene gameScene = new Scene(gameRoot, WIDTH, HEIGHT, Color.rgb(189, 177, 92));
         setGameScene(gameScene);
         GameScene game = new GameScene();
-        game.show(gameRoot, timer, primaryStage, LoginController.highScore, size);
+        game.show(gameScene, gameRoot, timer, primaryStage, LoginController.highScore, size);
         primaryStage.setScene(gameScene);
         primaryStage.show();
     }

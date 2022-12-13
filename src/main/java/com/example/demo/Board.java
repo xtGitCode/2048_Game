@@ -10,16 +10,16 @@ public class Board {
     private static int boardSize=8;
     private final static int distanceBetweenCells = 10;
     private static final int cellHEIGHT = 620; //size of tiles
-    private Cell[][] cells = new Cell[this.boardSize][this.boardSize];
+    private Cell[][] cells = new Cell[boardSize][boardSize];
     public static double LENGTH = (cellHEIGHT - ((boardSize + 1) * distanceBetweenCells)) / (double) boardSize;
     double scale; // change board position based on size
 
     //Constructor
     public Board(int boardSize, Group root) {
-        this.boardSize = boardSize;
+        Board.boardSize = boardSize;
         LENGTH = (cellHEIGHT - ((boardSize + 1) * distanceBetweenCells)) / (double) boardSize;
         this.root = root;
-
+        System.out.println(boardSize);
         start();
     }
 
@@ -46,7 +46,7 @@ public class Board {
         }
     }
 
-    private int haveEmptyCell() {
+    int haveEmptyCell() {
         for (int i = 0; i < boardSize; i++) {
             for (int j = 0; j < boardSize; j++) {
                 if (cells[i][j].getNumber() == 0)
@@ -216,7 +216,7 @@ public class Board {
 
     }
 
-    void moveDown() {
+    public void moveDown() {
         int moved = 0;
         for (int j = 0; j < boardSize; j++) {
             for (int i = boardSize - 1; i >= 0; i--) {
@@ -289,7 +289,7 @@ public class Board {
         return false;
     }
 
-    private boolean canNotMove() {
+    boolean canNotMove() {
         for (int i = 0; i < boardSize; i++) {
             for (int j = 0; j < boardSize; j++) {
                 if (haveSameNumber(i, j)) {
@@ -302,6 +302,6 @@ public class Board {
 
     private void sumCellNumbersToScore(int i, int j) {
         long cellNumber = cells[i][j].getNumber();
-        long score = cellNumber * 2;
+        GameScene.score += cellNumber * 2;
     }
 }

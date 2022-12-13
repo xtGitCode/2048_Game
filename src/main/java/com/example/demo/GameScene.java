@@ -7,6 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -23,9 +24,12 @@ import java.util.Scanner;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import static com.example.demo.Main.HEIGHT;
+import static com.example.demo.Main.WIDTH;
+
 public class GameScene {
     static int counter = 30;
-    private long score = 0;
+    public static long score = 0;
 
 
     public void updateScore(long oldScore, long newScore) throws IOException {
@@ -51,7 +55,7 @@ public class GameScene {
         }
     }
 
-    public void show(Group root, boolean timerMode, Stage primaryStage, long highScore, int size){
+    public void show(Scene gameScene, Group root, boolean timerMode, Stage primaryStage, long highScore, int size){
         Board BOARD = new Board(size, root);
         if (timerMode){
             Text timerText = new Text();
@@ -139,6 +143,82 @@ public class GameScene {
                 a.show();
             }
         });
+
+        gameScene.addEventHandler(KeyEvent.KEY_PRESSED, key ->{
+            Platform.runLater(() -> {
+                int haveEmptyCell;
+                boolean isValid = false; //to check whether key pressed is valid
+                if (key.getCode() == KeyCode.DOWN) {
+                    isValid = true;
+                    BOARD.moveDown();
+                } else if (key.getCode() == KeyCode.UP) {
+                    isValid = true;
+                    BOARD.moveUp();
+                } else if (key.getCode() == KeyCode.LEFT) {
+                    isValid = true;
+                    BOARD.moveLeft();
+                } else if (key.getCode() == KeyCode.RIGHT) {
+                    isValid = true;
+                    BOARD.moveRight();
+                }
+                if (isValid) {
+                    scoreText.setText(score + ""); //scoring
+                    if(score>highScore){
+                        highScoreText.setText("BEST: " + score + "");
+                        LoginController.highScore = highScore;
+                    }
+                    haveEmptyCell = BOARD.haveEmptyCell();
+                    if (haveEmptyCell == -1) {
+                        if (BOARD.canNotMove()) {
+                            try {
+                                updateScore(highScore, score);
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                            Alert a = new Alert(Alert.AlertType.NONE);
+                            a.setAlertType(Alert.AlertType.INFORMATION);
+                            a.setHeaderText("Score Saved");
+                            a.show();
+                            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("fxml/endGame.fxml"));
+                            Scene endScene = null;
+                            try {
+                                endScene = new Scene(fxmlLoader.load(), 780, 780);
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                            EndGameController endController = fxmlLoader.getController();
+                            endController.curScore.setText(score + "");
+                            endController.bestScore.setText(highScore + "");
+                            primaryStage.setScene(endScene);
+                            primaryStage.show();
+                            root.getChildren().clear();
+                            score = 0;
+                        }
+                    }
+                }
+                if (key.getCode() == KeyCode.ESCAPE){
+                    Alert a = new Alert(Alert.AlertType.NONE);
+                    a.setAlertType(Alert.AlertType.CONFIRMATION);
+                    a.setTitle("Return");
+                    a.setHeaderText("Quit to main menu and lose current progress?");
+                    a.setContentText("Are you sure?");
+                    a.showAndWait().ifPresent(response -> {
+                        if (response == ButtonType.OK) {
+                            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("fxml/index.fxml"));
+                            Scene indexScene = null;
+                            try {
+                                indexScene = new Scene(fxmlLoader.load(), WIDTH, HEIGHT);
+                            } catch (IOException ex) {
+                                ex.printStackTrace();
+                            }
+                            primaryStage.setScene(indexScene);
+                            primaryStage.show();
+                        }
+                    });
+                }
+            });
+        });
+
     }
 
 
