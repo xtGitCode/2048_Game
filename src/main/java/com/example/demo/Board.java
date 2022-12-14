@@ -158,11 +158,12 @@ public class Board {
 
     /**
      * Name: passDestination
-     * Purpose:
+     * Purpose: get coordinate for cells to move to
+     *          eg. find the leftest most position for cell to move to if move left method
      * @param i cell array row position
      * @param j cell array column positin
      * @param direct direction - left(l), right(r), up(u), down(d)
-     * @return
+     * @return coordinate for cell to move to
      */
     private int passDestination(int i, int j, char direct) {
         int coordinate = j;
@@ -316,12 +317,14 @@ public class Board {
     }
 
     /**
-     *
-     * @param i
-     * @param j
-     * @param des
-     * @param sign
-     * @return
+     * Name: isValidDesH
+     * Purpose: Check whether moved cell can merge with other cells
+     * @param i cell array row position
+     * @param j cell array column position
+     * @param des destination coordinaton
+     * @param sign integer to check whether destination is at most side position
+     * @return true if can merge
+     *         false if can't merge
      */
     private boolean isValidDesH(int i, int j, int des, int sign) {
         if (des + sign < boardSize && des + sign >= 0) {
@@ -334,33 +337,37 @@ public class Board {
     }
 
     /**
-     *
-     * @param i
-     * @param j
-     * @param des
-     * @param sign
-     * @return
+     * Name: moveHorizontally
+     * Purpose: call functions that merge cell and change position of cell
+     * @param i cell array row position
+     * @param j cell array column position
+     * @param des destination coordination
+     * @param sign integer to check whether destination is at most side position
+     * @return 1 if cells moved or merge
+     *         0 if cells did not move at all
      */
     private int moveHorizontally(int i, int j, int des, int sign) {
-        if (isValidDesH(i, j, des, sign)) {
-            sumCellNumbersToScore(i,j); //insert here so when only cells merge, score is calculated
+        if (isValidDesH(i, j, des, sign)) {     //can merge
+            sumCellNumbersToScore(i,j);         //only when cells merge, score is calculated
             cells[i][j].adder(cells[i][des + sign]);
             cells[i][des].setModify(true);
             return 1;
         } else if (des != j) {
-            cells[i][j].changeCell(cells[i][des]);
+            cells[i][j].changeCell(cells[i][des]);      //cells didn't merge but change position
             return 1;
         }
-        return 0;
+        return 0;       //cells did not change position
     }
 
     /**
-     *
-     * @param i
-     * @param j
-     * @param des
-     * @param sign
-     * @return
+     * Name: isValidDesV
+     * Purpose: Check whether moved cell can merge with other cells
+     * @param i cell array row position
+     * @param j cell array column position
+     * @param des destination coordinaton
+     * @param sign integer to check whether destination is at most side position
+     * @return true if can merge
+     *         false if can't merge
      */
     private boolean isValidDesV(int i, int j, int des, int sign) {
         if (des + sign < boardSize && des + sign >= 0)
@@ -372,12 +379,14 @@ public class Board {
     }
 
     /**
-     *
-     * @param i
-     * @param j
-     * @param des
-     * @param sign
-     * @return
+     * Name: moveVertically
+     * Purpose: call functions that merge cell and change position of cell
+     * @param i cell array row position
+     * @param j cell array column position
+     * @param des destination coordination
+     * @param sign integer to check whether destination is at most side position
+     * @return 1 if cells moved or merge
+     *         0 if cells did not move at all
      */
     private int moveVertically(int i, int j, int des, int sign) {
         if (isValidDesV(i, j, des, sign)) {

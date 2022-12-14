@@ -1,3 +1,6 @@
+/**
+ * @author Xiao Thung Gan
+ */
 package com.example.demo.controllers;
 
 import com.example.demo.Account;
@@ -10,12 +13,18 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
+import static com.example.demo.Main.HEIGHT;
+import static com.example.demo.Main.WIDTH;
+
+/**
+ * Name: LoginController Class
+ * Purpose: Manage operation of login.fxml and signup.fxml
+ */
 public class LoginController {
     public static String username;
     public String password;
     public static long highScore;
-    static final int WIDTH = 780;
-    static final int HEIGHT = 780;
+
     @FXML
     private Label loginMessageLabel;
     @FXML
@@ -25,6 +34,12 @@ public class LoginController {
     @FXML
     private TextField enterPassword;
 
+    /**
+     * Name: returnMenuButton
+     * Purpose: load main menu page and display
+     * @param event
+     * @throws Exception
+     */
     @FXML
     public void returnMenuButton(ActionEvent event) throws Exception{
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("fxml/index.fxml"));
@@ -34,13 +49,18 @@ public class LoginController {
         primaryStage.show();
     }
 
+    /**
+     * Name: signupAccButton
+     * Purpose: create and store account if username not in database record
+     * @throws Exception
+     */
     @FXML
-    public void signupAccButton(ActionEvent event) throws Exception{
-        if (enterUsername.getText().isBlank() == false && enterPassword.getText().isBlank() == false){
+    public void signupAccButton() throws Exception{
+        if (!enterUsername.getText().isBlank() && !enterPassword.getText().isBlank()){      //make sure both fields are filled
             username = enterUsername.getText().toString();
             password = enterPassword.getText().toString();
-            if (Account.accountHaveBeenExist(username)==null){ //unique account
-                {Account.makeNewAccount(username,password,0);} // add new account
+            if (Account.accountHaveBeenExist(username)==null){      //unique account
+                {Account.makeNewAccount(username,password,0);}      // add new account
                 signupMessageLabel.setText("Sign up successful! Please login now");
             } else{
                 signupMessageLabel.setText("Username taken! Please enter another username.");
@@ -49,9 +69,16 @@ public class LoginController {
             signupMessageLabel.setText("Please enter username and password");
         }
     }
+
+    /**
+     * Name: loginAccButton
+     * Purpose: check if username and password is correct, then load main menu and display for user
+     * @param event
+     * @throws Exception
+     */
     @FXML
     public void loginAccButton(ActionEvent event) throws Exception{
-        if (enterUsername.getText().isBlank() == false && enterPassword.getText().isBlank() == false){
+        if (!enterUsername.getText().isBlank() && !enterPassword.getText().isBlank()){
             username = enterUsername.getText().toString();
             password = enterPassword.getText().toString();
             if (Account.accountHaveBeenExist(username)==null){ //no record
@@ -78,6 +105,12 @@ public class LoginController {
         }
     }
 
+    /**
+     * Name: switchSignUp
+     * Purpose: switch scene to sign up page
+     * @param event
+     * @throws Exception
+     */
     @FXML
     public void switchSignUp(ActionEvent event) throws Exception{
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("fxml/signup.fxml"));
@@ -87,6 +120,12 @@ public class LoginController {
         primaryStage.show();
     }
 
+    /**
+     * Name: switchLogin
+     * Purpose: switch scene to login page
+     * @param event
+     * @throws Exception
+     */
     @FXML
     public void switchLogin(ActionEvent event) throws Exception{
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("fxml/login.fxml"));

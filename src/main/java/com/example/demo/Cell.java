@@ -75,8 +75,9 @@ public class Cell {
 
     /**
      * Name: adder
-     * Purpose:
-     * @param cell
+     * Purpose: add cell number with itself and change cell number to sum
+     * @param cell cell that is to be added
+     * Return: void
      */
     void adder(Cell cell) {
         cell.getTextClass().setText((cell.getNumber() + this.getNumber()) + "");

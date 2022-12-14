@@ -1,16 +1,16 @@
 /**
  * @author Xiao Thung Gan - modified
  */
+
 package com.example.demo;
 
-import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
 /**
  * Name: TextMaker Class
- * Purpose:
+ * Purpose: create, position and change text in cells
  */
 class TextMaker {
     private static TextMaker singleInstance = null;
@@ -29,9 +29,9 @@ class TextMaker {
      * Name: madeText
      * Purpose: create number text and position to cell
      * @param input text to create
-     * @param xCell
-     * @param yCell
-     * @return
+     * @param xCell horizontal position of cell
+     * @param yCell vertical position of cell
+     * @return text that is created
      */
     static Text madeText(String input, double xCell, double yCell) {
         double length = Board.LENGTH;
@@ -44,6 +44,13 @@ class TextMaker {
         return text;
     }
 
+    /**
+     * Name: changeTwoText
+     * Purpose: change current cell number to new number
+     * @param first current cell number
+     * @param second new cell number
+     * Return: void
+     */
     static void changeTwoText(Text first, Text second) {
         String temp;
         temp = first.getText();

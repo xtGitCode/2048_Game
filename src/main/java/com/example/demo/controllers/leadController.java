@@ -1,3 +1,6 @@
+/**
+ * @author Xiao Thung Gan
+ */
 package com.example.demo.controllers;
 
 import com.example.demo.Account;
@@ -14,19 +17,21 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.stream.Collectors;
 
 import static com.example.demo.Account.accounts;
+import static com.example.demo.Main.HEIGHT;
+import static com.example.demo.Main.WIDTH;
 
+/**
+ * Name: leadController Class
+ * Purpose: display leaderboard contents in tableview
+ */
 public class leadController implements Initializable {
-    static int WIDTH = 780;
-    static int HEIGHT = 780;
     @FXML
     private TableView<Account> leaderboard;
 
@@ -53,6 +58,12 @@ public class leadController implements Initializable {
         leaderboard.setItems(data);
     }
 
+    /**
+     * Name: backButton
+     * Purpose: load main menu page and display it
+     * @param event
+     * @throws Exception
+     */
     @FXML
     public void backButton(ActionEvent event) throws Exception{
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("fxml/index.fxml"));

@@ -1,6 +1,7 @@
 /**
  * @author Xiao Thung Gan
  */
+
 package com.example.demo.controllers;
 
 import com.example.demo.Main;
@@ -20,23 +21,34 @@ import java.io.IOException;
 import static com.example.demo.Main.HEIGHT;
 import static com.example.demo.Main.WIDTH;
 
+/**
+ * Name: EndGameController Class
+ * Purpose: Manage operation of endGame.fxml and winGame.fxml
+ */
 public class EndGameController {
+    /**
+     * current score
+     */
     @FXML
     public Label curScore;
 
+    /**
+     * best score achieved by user
+     * (can be current score or past high score)
+     */
     @FXML
     public Label bestScore;
 
-    public static EndGameController singleInstance = null;
     public EndGameController(){
 
     }
-    public static EndGameController getInstance(){
-        if(singleInstance == null)
-            singleInstance= new EndGameController();
-        return singleInstance;
-    }
 
+    /**
+     * Name: returnMenu
+     * Purpose: Load Main Menu and display
+     * @param event
+     * @throws IOException
+     */
     @FXML
     public void returnMenu(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("fxml/index.fxml"));
@@ -46,6 +58,10 @@ public class EndGameController {
         primaryStage.show();
     }
 
+    /**
+     * Name: quit
+     * Purpose: quit program
+     */
     @FXML
     public void quit() {
         Alert a = new Alert(Alert.AlertType.NONE);
