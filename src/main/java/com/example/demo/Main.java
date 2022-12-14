@@ -13,7 +13,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         Account.createdAccounts("users.txt");       //Initialize existing accounts when program starts
 
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("fxml/index.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("fxml/index.fxml"));  //load main menu fxml
         Scene menuScene = new Scene(fxmlLoader.load(), WIDTH, HEIGHT);
         primaryStage.setTitle("2048");      //Display main menu first when program runs
         primaryStage.setScene(menuScene);

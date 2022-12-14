@@ -1,3 +1,6 @@
+/**
+ * @author Xiao Thung Gan - modified
+ */
 package com.example.demo;
 
 import javafx.scene.Group;
@@ -5,6 +8,10 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
+/**
+ * Name: TextMaker Class
+ * Purpose:
+ */
 class TextMaker {
     private static TextMaker singleInstance = null;
 
@@ -18,9 +25,17 @@ class TextMaker {
         return singleInstance;
     }
 
-    static Text madeText(String input, double xCell, double yCell, Group root) {
+    /**
+     * Name: madeText
+     * Purpose: create number text and position to cell
+     * @param input text to create
+     * @param xCell
+     * @param yCell
+     * @return
+     */
+    static Text madeText(String input, double xCell, double yCell) {
         double length = Board.LENGTH;
-        double fontSize = (3 * length) / 7.0;
+        double fontSize = (2 * length) / 7.0;
         Text text = new Text(input);
         text.setFont(Font.font(fontSize));
         text.relocate((xCell + (1.2)* length / 7.0), (yCell + 2 * length / 7.0));

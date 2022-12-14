@@ -1,15 +1,29 @@
+/**
+ * @author Xiao Thung Gan - modified
+ */
+
 package com.example.demo;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * Name: Account Class
+ * Purpose: Creates and manages accounts when user log in or sign up
+ */
 public class Account implements Comparable<Account> {
     private long highScore = 0;
     private String userName ;
     private String password ;
     public static ArrayList<Account> accounts = new ArrayList<>();
 
+    /**
+     * Name: Account (the constructor)
+     * @param userName User's name
+     * @param password User's password for authentication
+     * @param highScore User's best score in game
+     */
     public Account(String userName, String password, String highScore){
         this.userName=userName;
         this.password=password;
@@ -33,6 +47,12 @@ public class Account implements Comparable<Account> {
         return password;
     }
 
+    /**
+     * Name: accountHaveBeenExist
+     * Purpose: Check whether user's account exist in system database
+     * @param userName User input username
+     * @return user's account if it exists, else, return null.
+     */
     public static Account accountHaveBeenExist(String userName){
         for(Account account : accounts){
             if(account.getUserName().equals(userName)){
@@ -42,6 +62,15 @@ public class Account implements Comparable<Account> {
         return null;
     }
 
+    /**
+     * Name: makeNewAccount
+     * Purpose: Create new user account and store in database
+     * @param userName User's username
+     * @param password User's password for authentication
+     * @param highScore User's best score in game
+     * @throws IOException
+     * Return: void
+     */
     public static void makeNewAccount(String userName, String password, long highScore) throws IOException {
         highScore = Long.parseLong(Long.toString(highScore));
         StringBuilder sb = new StringBuilder();
@@ -57,11 +86,18 @@ public class Account implements Comparable<Account> {
         accounts.add(account);
     }
 
-    public static void createdAccounts(String f) throws IOException {
+    /**
+     * Name: createdAccounts
+     * Purpose: Initialize all created accounts in database to arraylist
+     * @param pathName path to text file (database storing accounts)
+     * @throws IOException
+     * Return: void
+     */
+    public static void createdAccounts(String pathName) throws IOException {
         accounts.clear();
-        File file = new File(f);
+        File file = new File(pathName);
         if (file.exists()) {
-            Scanner s = new Scanner(new File(f));
+            Scanner s = new Scanner(new File(pathName));
             while (s.hasNextLine()) {
                 String str = s.nextLine();
                 String[] arrofStr = str.split(",");
@@ -77,6 +113,12 @@ public class Account implements Comparable<Account> {
 
     }
 
+    /**
+     * Name: sortAccounts
+     * Purpose: Sort accounts in arraylist in ascending order of high score
+     * @param accounts Arraylist containing all created accounts
+     * Return: void
+     */
     public static void sortAccounts(ArrayList<Account> accounts){
         boolean sorted = false;
         Account temp;

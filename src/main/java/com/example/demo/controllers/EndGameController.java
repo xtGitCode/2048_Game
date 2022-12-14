@@ -1,3 +1,6 @@
+/**
+ * @author Xiao Thung Gan
+ */
 package com.example.demo.controllers;
 
 import com.example.demo.Main;
@@ -14,9 +17,8 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-import static com.example.demo.controllers.Controller.HEIGHT;
-import static com.example.demo.controllers.Controller.WIDTH;
-
+import static com.example.demo.Main.HEIGHT;
+import static com.example.demo.Main.WIDTH;
 
 public class EndGameController {
     @FXML

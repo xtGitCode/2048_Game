@@ -1,3 +1,7 @@
+/**
+ * @author Xiao Thung Gan - modified
+ */
+
 package com.example.demo;
 
 import com.example.demo.controllers.EndGameController;
@@ -7,7 +11,6 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -16,12 +19,9 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-
 import java.io.*;
-import java.util.Random;
 import java.util.Scanner;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -29,11 +29,23 @@ import java.util.TimerTask;
 import static com.example.demo.Main.HEIGHT;
 import static com.example.demo.Main.WIDTH;
 
+/**
+ * Name: GameScene Class
+ * Purpose: Manages the interface of the game.
+ *          Display and manage elements like score, timer, text, labels
+ */
 public class GameScene {
-    static int counter = 30;
-    public static long score = 0;
+    static int counter = 30;        //counter for timer mode
+    public static long score = 0;       //initialize score to 0 when game starts
 
-
+    /**
+     * Name: updateScore
+     * Purpose: Updates score to database (text file)
+     *          if current score is bigger than past high score
+     * @param oldScore score stored in database
+     * @param newScore current score in game
+     * @throws IOException
+     */
     public void updateScore(long oldScore, long newScore) throws IOException {
         if (newScore > oldScore) {
             File file = new File("users.txt");
@@ -41,23 +53,52 @@ public class GameScene {
             String stringToReplace = LoginController.username + "," + oldScore;
             String replaceWith = LoginController.username + "," + newScore;
             String line;
-            Scanner s = new Scanner(new File("users.txt"));
+            Scanner s = new Scanner(new File("users.txt"));     //read text file
             while (s.hasNextLine()) {
-                line = s.nextLine();
+                line = s.nextLine();        //store string in file to line
                 if (line.contains(stringToReplace)) {
-                    line = line.replace(stringToReplace, replaceWith);
+                    line = line.replace(stringToReplace, replaceWith);      //replace line
                 }
-                data = data.concat(line + "\n");
+                data = data.concat(line + "\n");        //store line in data string
             }
             s.close();
             BufferedWriter out = new BufferedWriter(new FileWriter(file));
-            out.write(data);
+            out.write(data);        //write all data back in file
             out.close();
         }
     }
 
-    public void show(Scene gameScene, Group root, boolean timerMode, Stage primaryStage, long highScore, int size) {
-        Board BOARD = new Board(size, root);
+    /**
+     * Name: showGame
+     * Purpose: main game loop
+     *          display and operate timer,
+     *          display all score, high score texts and save score button
+     *          add key event input handler to scene
+     *              valid moves are:
+     *                  UP arrow - move up
+     *                  DOWN arrow - move down
+     *                  RIGHT arrow - move right
+     *                  LEFT arrow - move left
+     *                  ESC - quit to menu
+     *
+     *          manage win, lose or have empty cells condition
+     *              win when 2048 is achieved, user can choose to continue or end game
+     *              lose when board is filled and no move can be made, end game scene will show
+     *              have empty cells then spawn random cells
+     *
+     * @param gameScene scene for game
+     *                  background color and window size initialized in gameModeController
+     * @param root root for game
+     * @param timerMode whether user chose timer mode or not
+     * @param primaryStage current stage
+     * @param highScore high score stored in user account
+     * @param size user board size choice
+     * Return: void
+     */
+    public void showGame(Scene gameScene, Group root, boolean timerMode, Stage primaryStage, long highScore, int size) {
+        Board BOARD = new Board(size, root);        //create board object to generate board and cells
+
+        //implement timer
         if (timerMode) {
             Text timerText = new Text();
             root.getChildren().add(timerText);
@@ -71,8 +112,8 @@ public class GameScene {
                 public void run() {
                     Platform.runLater(() -> {
                         timerText.setText(counter + "");
-                        --counter;
-                        if (counter == 0) {
+                        --counter;      //counter - 1 every second
+                        if (counter == 0) {         //if counter becomes 0, game ends
                             timer.cancel();
                             try {
                                 updateScore(highScore, score);
@@ -101,9 +142,10 @@ public class GameScene {
                     });
                 }
             };
-            timer.schedule(timerTask, 0, 1000);
+            timer.schedule(timerTask, 0, 1000);     //runs task every second
         }
 
+        //add following elements to interface
         Text text = new Text();
         root.getChildren().add(text);
         text.setText("SCORE :");
@@ -146,6 +188,7 @@ public class GameScene {
             }
         });
 
+        //add key event handler to game scene
         gameScene.addEventHandler(KeyEvent.KEY_PRESSED, key -> {
             Platform.runLater(() -> {
                 int haveEmptyCell;
@@ -182,6 +225,8 @@ public class GameScene {
                         }
                     });
                 }
+
+                //if key pressed is valid then change score text and check for empty cell, win or lose condition
                 if (isValid) {
                     scoreText.setText(score + ""); //scoring
                     if (score > highScore) {
@@ -190,8 +235,8 @@ public class GameScene {
                     }
                     haveEmptyCell = BOARD.haveEmptyCell();
                     switch (haveEmptyCell) {
-                        case -1:
-                            if (BOARD.canNotMove()) {
+                        case -1:        //no empty cell found
+                            if (BOARD.canNotMove()) { //no movement left then end game
                                 try {
                                     updateScore(highScore, score);
                                 } catch (IOException e) {
@@ -217,7 +262,7 @@ public class GameScene {
                                 score = 0;
                             }
                             break;
-                        case 0:
+                        case 0:     //2048 cell found then win game
                             Alert a = new Alert(Alert.AlertType.NONE);
                             a.setAlertType(Alert.AlertType.CONFIRMATION);
                             a.getButtonTypes().clear();
