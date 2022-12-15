@@ -5,18 +5,18 @@ Student ID: 20303967
 ### Requirements
 * Javafx-sdk-19 (need to link path to project structure - libraries)
 ### How to Compile? 
-1. Open new Javafx project in IntelliJ
-2. Copy src folder to project
-3. Build project
-4. Click run and program will start 
+1. Open GanXiaoThung_JavaVersion folder in IDE
+2. Build project
+3. Click run and program will start 
 ## Javadoc Path
 ## Key Features
 # Working Properly
-* Account log in and sign up
-* Main Menu (guest and user version)
+* User log in and sign up
+* Main Menu 
+*   Different display and buttons for user and guest
 * Leaderboard 
 * 2048 Game
-*   Game mode - endless and timer
+*   Choose game mode - endless or timer
 *   Choose theme
 *   Scores
 *   Save score function
