@@ -30,9 +30,8 @@ import static com.example.demo.Main.HEIGHT;
 import static com.example.demo.Main.WIDTH;
 
 /**
- * Name: GameScene Class
- * Purpose: Manages the interface of the game.
- *          Display and manage elements like score, timer, text, labels
+ * Manages the interface of the game.
+ * Display and manage elements like score, timer, text, labels
  */
 public class GameScene {
     private static int counter = 30;        //counter for timer mode
@@ -47,9 +46,8 @@ public class GameScene {
     }
 
     /**
-     * Name: updateScore
-     * Purpose: Updates score to database (text file)
-     *          if current score is bigger than past high score
+     * Updates score to database (text file)
+     * if current score is bigger than past high score
      * @param oldScore score stored in database
      * @param newScore current score in game
      * @throws IOException
@@ -77,8 +75,7 @@ public class GameScene {
     }
 
     /**
-     * Name: showGame
-     * Purpose: main game loop
+     *  This is the main game loop.
      *          display and operate timer,
      *          display all score, high score texts and save score button
      *          add key event input handler to scene

@@ -9,8 +9,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
 /**
- * Name: TextMaker Class
- * Purpose: create, position and change text in cells
+ * create, position and change text in cells
  */
 class TextMaker {
     private static TextMaker singleInstance = null;
@@ -26,8 +25,7 @@ class TextMaker {
     }
 
     /**
-     * Name: madeText
-     * Purpose: create number text and position to cell
+     * create number text and position to cell
      * @param input text to create
      * @param xCell horizontal position of cell
      * @param yCell vertical position of cell
@@ -45,8 +43,7 @@ class TextMaker {
     }
 
     /**
-     * Name: changeTwoText
-     * Purpose: change current cell number to new number
+     * change current cell number to new number
      * @param first current cell number
      * @param second new cell number
      * Return: void

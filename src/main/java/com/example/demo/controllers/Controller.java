@@ -20,8 +20,7 @@ import static com.example.demo.Main.HEIGHT;
 import static com.example.demo.Main.WIDTH;
 
 /**
- * Name: Controller Class
- * Purpose: Manage operation of index.fxml (Main Menu)
+ * Manage operation of index.fxml (Main Menu)
  */
 public class Controller{
 
@@ -37,8 +36,7 @@ public class Controller{
     public Button leadButton;
 
     /**
-     * Name: startButton
-     * Purpose: Load Game Mode Interface and display
+     * Load Game Mode Interface and display
      * @param event
      * @throws Exception
      */
@@ -52,8 +50,7 @@ public class Controller{
     }
 
     /**
-     * Name: quitButton
-     * Purpose: Show alert then quit program if user click 'OK'
+     * Show alert then quit program if user click 'OK'
      */
     @FXML
     public void quitButton() {
@@ -70,8 +67,7 @@ public class Controller{
     }
 
     /**
-     * Name: loginPageButton
-     * Purpose: Load Login Page and display it
+     * Load Login Page and display it
      * @param event
      * @throws Exception
      */
@@ -85,8 +81,7 @@ public class Controller{
     }
 
     /**
-     * Name: logoutButton
-     * Purpose: Load Menu Page and change elements to non-user display
+     * Load Menu Page and change elements to non-user display
      * @param event
      * @throws Exception
      */
@@ -117,8 +112,7 @@ public class Controller{
     }
 
     /**
-     * Name: leaderboardButton
-     * Purpose: Load leaderboard page and display it
+     * Load leaderboard page and display it
      * @param event
      * @throws Exception
      */

@@ -9,8 +9,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 
 /**
- * Name: Cell Class
- * Purpose: create and position cells
+ * create and position cells
  *          manages cell merging
  */
 public class Cell {
@@ -28,7 +27,7 @@ public class Cell {
     }
 
     /**
-     * Name: Cell (the constructor)
+     * cell (the constructor)
      * @param x horizontal position
      * @param y vertical position
      * @param scale size of cell
@@ -53,8 +52,7 @@ public class Cell {
     }
 
     /**
-     * Name: changeCell
-     * Purpose: change cell number
+     * change cell number
      * @param cell cell that is to be change
      * Return: void
      */
@@ -74,8 +72,7 @@ public class Cell {
     }
 
     /**
-     * Name: adder
-     * Purpose: add cell number with itself and change cell number to sum
+     * add cell number with itself and change cell number to sum
      * @param cell cell that is to be added
      * Return: void
      */
@@ -88,8 +85,7 @@ public class Cell {
     }
 
     /**
-     * Name: setColorByNumber
-     * Purpose: set color based on cell number
+     * set color based on cell number
      * @param number cell number
      */
     void setColorByNumber(int number) {

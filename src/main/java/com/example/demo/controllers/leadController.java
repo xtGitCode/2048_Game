@@ -27,8 +27,7 @@ import static com.example.demo.Main.HEIGHT;
 import static com.example.demo.Main.WIDTH;
 
 /**
- * Name: leadController Class
- * Purpose: display leaderboard contents in tableview
+ * display leaderboard contents in tableview
  */
 public class leadController implements Initializable {
     @FXML
@@ -58,8 +57,7 @@ public class leadController implements Initializable {
     }
 
     /**
-     * Name: backButton
-     * Purpose: load main menu page and display it
+     * load main menu page and display it
      * @param event
      * @throws Exception
      */

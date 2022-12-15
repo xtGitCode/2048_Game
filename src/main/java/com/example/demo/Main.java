@@ -1,3 +1,6 @@
+/**
+ * @author Xiao Thung Gan - modified
+ */
 package com.example.demo;
 
 import javafx.application.Application;
@@ -9,11 +12,18 @@ import javafx.stage.Stage;
 
 import java.util.Objects;
 
+/**
+ * Main class starts program by loading main menu to interface
+ */
 public class Main extends Application {
     public static final int WIDTH = 780;
     public static final int HEIGHT = 780;
 
-
+    /**
+     * starts program by playing music and loading main menu to stage
+     * @param primaryStage main stage
+     * @throws Exception
+     */
     @Override
     public void start(Stage primaryStage) throws Exception {
 
@@ -33,7 +43,10 @@ public class Main extends Application {
         primaryStage.show();
     }
 
-
+    /**
+     * launches program
+     * @param args
+     */
     public static void main(String[] args) {
         launch(args);
     }

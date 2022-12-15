@@ -22,8 +22,7 @@ import static com.example.demo.Main.HEIGHT;
 import static com.example.demo.Main.WIDTH;
 
 /**
- * Name: EndGameController Class
- * Purpose: Manage operation of endGame.fxml and winGame.fxml
+ * Manage operation of endGame.fxml and winGame.fxml
  */
 public class EndGameController {
     /**
@@ -44,8 +43,7 @@ public class EndGameController {
     }
 
     /**
-     * Name: returnMenu
-     * Purpose: Load Main Menu and display
+     * Load Main Menu and display
      * @param event
      * @throws IOException
      */
@@ -59,8 +57,7 @@ public class EndGameController {
     }
 
     /**
-     * Name: quit
-     * Purpose: quit program
+     * quit program
      */
     @FXML
     public void quit() {

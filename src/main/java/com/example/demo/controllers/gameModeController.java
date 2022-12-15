@@ -23,8 +23,7 @@ import static com.example.demo.Main.WIDTH;
 import static com.example.demo.Main.HEIGHT;
 
 /**
- * Name: gameModeController Class
- * Purpose: Manage operation of gameMode.fxml (Game Mode Interface)
+ * Manage operation of gameMode.fxml (Game Mode Interface)
  *          Let user choose their choice of theme, board size and game mode
  */
 public class gameModeController implements Initializable {
@@ -61,8 +60,7 @@ public class gameModeController implements Initializable {
     }
 
     /**
-     * Name: endlessMode
-     * Purpose: Load 2038 game scene without timer, pass user choice of board size and theme
+     * Load 2038 game scene without timer, pass user choice of board size and theme
      * @param event
      */
     @FXML
@@ -117,8 +115,7 @@ public class gameModeController implements Initializable {
     }
 
     /**
-     * Name: timerMode
-     * Purpose: Load 2038 game scene with timer, pass user choice of board size and theme
+     * Load 2048 game scene with timer, pass user choice of board size and theme
      * @param event
      */
     @FXML

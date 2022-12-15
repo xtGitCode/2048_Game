@@ -28,7 +28,7 @@ public class Board {
     private final AudioClip click = new AudioClip(getClass().getResource("Sounds/cellMerge.mp3").toExternalForm());
 
     /**
-     * Name: Board (the controller)
+     * Board (the constructor)
      * @param boardSize size of board (rows of board * columns of board)
      * @param root root of game
      */
@@ -41,8 +41,7 @@ public class Board {
     }
 
     /**
-     * Name: start
-     * Purpose: calls methods to generate board and spawn 2 random cells
+     * calls methods to generate board and spawn 2 random cells
      */
     private void start(){
         initialize();
@@ -51,8 +50,7 @@ public class Board {
     }
 
     /**
-     * Name: initialize
-     * Purpose: generate cells in board
+     * generate cells in board
      * Return: void
      */
     public void initialize() {
@@ -75,8 +73,7 @@ public class Board {
     }
 
     /**
-     * Name: haveEmptyCell
-     * Purpose: check if board is in any of these conditions
+     * check if board is in any of these conditions
      *              win - board contains 2048 cell
      *              lose - no empty cells left in board
      *              have empty - board contains at lease one empty cell
@@ -95,8 +92,7 @@ public class Board {
     }
 
     /**
-     * Name: randomFillNumber
-     * Purpose: get empty cells position
+     * get empty cells position
      *          generate cells either 2 or 4 randomly to an empty cell
      * Return: void
      */
@@ -146,8 +142,7 @@ public class Board {
     }
 
     /**
-     * Name: spawnRandom
-     * Purpose: check if empty cell exist in board
+     * check if empty cell exist in board
      *          if yes then call method to spawn random new cell
      * Return: void
      */
@@ -160,8 +155,7 @@ public class Board {
     }
 
     /**
-     * Name: passDestination
-     * Purpose: get coordinate for cells to move to
+     * get coordinate for cells to move to
      *          eg. find the leftest most position for cell to move to if move left method
      * @param i cell array row position
      * @param j cell array column positin
@@ -222,8 +216,7 @@ public class Board {
     }
 
     /**
-     * Name: moveLeft
-     * Purpose: call method and pass paramters to move cells left
+     * call method and pass paramters to move cells left
      *          only move cells that have value (not empty)
      *          check if any cells moved, then call spawn new cell method
      * Return: void
@@ -246,8 +239,7 @@ public class Board {
     }
 
     /**
-     * Name: moveRight
-     * Purpose: call method and pass parameters to move cells right
+     * call method and pass parameters to move cells right
      *          only move cells that have value (not empty)
      *          check if any cells moved, then call spawn new cell method
      * Return: void
@@ -270,8 +262,7 @@ public class Board {
     }
 
     /**
-     * Name: moveUp
-     * Purpose: call method and pass parameters to move cells up
+     * call method and pass parameters to move cells up
      *          only move cells that have value (not empty)
      *          check if any cells moved, then call spawn new cell method
      * Return: void
@@ -295,8 +286,7 @@ public class Board {
     }
 
     /**
-     * Name: moveDown
-     * Purpose: call method and pass parameters to move cells down
+     * call method and pass parameters to move cells down
      *          only move cells that have value (not empty)
      *          check if any cells moved, then call spawn new cell method
      * Return: void
@@ -320,8 +310,7 @@ public class Board {
     }
 
     /**
-     * Name: isValidDesH
-     * Purpose: Check whether moved cell can merge with other cells
+     * Check whether moved cell can merge with other cells
      * @param i cell array row position
      * @param j cell array column position
      * @param des destination coordinaton
@@ -340,8 +329,7 @@ public class Board {
     }
 
     /**
-     * Name: moveHorizontally
-     * Purpose: call functions that merge cell and change position of cell
+     * call functions that merge cell and change position of cell
      * @param i cell array row position
      * @param j cell array column position
      * @param des destination coordination
@@ -363,8 +351,7 @@ public class Board {
     }
 
     /**
-     * Name: isValidDesV
-     * Purpose: Check whether moved cell can merge with other cells
+     * Check whether moved cell can merge with other cells
      * @param i cell array row position
      * @param j cell array column position
      * @param des destination coordinaton
@@ -382,8 +369,7 @@ public class Board {
     }
 
     /**
-     * Name: moveVertically
-     * Purpose: call functions that merge cell and change position of cell
+     * call functions that merge cell and change position of cell
      * @param i cell array row position
      * @param j cell array column position
      * @param des destination coordination
@@ -405,8 +391,7 @@ public class Board {
     }
 
     /**
-     * Name: haveSameNumber
-     * Purpose: check if any same number cell is above, under or next to current cell
+     * check if any same number cell is above, under or next to current cell
      * @param i cell array row position
      * @param j cell array column position
      * @return true if have same number cells
@@ -423,8 +408,7 @@ public class Board {
     }
 
     /**
-     * Name: canNotMove
-     * Purpose: to check whether any movement can be made in current board
+     * to check whether any movement can be made in current board
      * @return true if no movement can be made (no same number cells next to each other)
      *         false if movement can be made (there are same number cells next to each other)
      */
@@ -440,8 +424,7 @@ public class Board {
     }
 
     /**
-     * Name: sumCellNumbersToScore
-     * Purpose: add cell number by itself and add sum to score
+     * add cell number by itself and add sum to score
      * @param i cell array row position
      * @param j cell array column position
      * Return: void

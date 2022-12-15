@@ -65,8 +65,7 @@ public class Account implements Comparable<Account> {
     }
 
     /**
-     * Name: makeNewAccount
-     * Purpose: Create new user account and store in database
+     * Create new user account and store in database
      * @param userName User's username
      * @param password User's password for authentication
      * @param highScore User's best score in game
@@ -89,8 +88,7 @@ public class Account implements Comparable<Account> {
     }
 
     /**
-     * Name: createdAccounts
-     * Purpose: Initialize all created accounts in database to arraylist
+     * Initialize all created accounts in database to arraylist
      * @param pathName path to text file (database storing accounts)
      * @throws IOException
      * Return: void
@@ -116,8 +114,7 @@ public class Account implements Comparable<Account> {
     }
 
     /**
-     * Name: sortAccounts
-     * Purpose: Sort accounts in arraylist in ascending order of high score
+     * Sort accounts in arraylist in ascending order of high score
      * @param accounts Arraylist containing all created accounts
      * Return: void
      */
