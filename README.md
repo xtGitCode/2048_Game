@@ -1,15 +1,15 @@
 # Software-Maintenance-Coursework---20303967
 Name: Gan Xiao Thung\
 Student ID: 20303967
-## How To Run
+# How To Run
 ### Requirements
 * Javafx-sdk-19 (need to link path to project structure - libraries)
 ### How to Compile? 
 1. Open GanXiaoThung_JavaVersion folder in IDE
 2. Build project
 3. Click run and program will start 
-## Javadoc Path
-## Key Features
+# Javadoc Path
+# Key Features
 ## Working Properly
 ### Background music
 ### Images
@@ -26,13 +26,13 @@ Student ID: 20303967
 *   Save score function
 *   End and win condition
 *   Display score and best score of user during end/win game scene
-# Future Improvements
+## Future Improvements
 ### Main Menu
 *   When user returns to menu, the guest version of menu will display instead of user version (user needs to log in again)
 ### Game
 *   When change board size from 4x4 or 6x6 to 8x8, error will occur in program
 *   When 2 different merges are to happen in same cell row, only 1 is merged
-## New Classes
+# New Classes
 ### Controller (handle main menu operations)
 *   Login / Logout Button
 *   Start Game Button
@@ -55,7 +55,7 @@ Student ID: 20303967
 *   Signup : store username and password to database
 *     prompt user to login 
 * Board - (generate board and operate cells movement)
-## Refactoring Done
+# Refactoring Done
 * Break down class to smaller subclasses
 * Rename variables and methods 
 * Change class variables to private and use getters/ setters to improve encapsulation
@@ -63,7 +63,7 @@ Student ID: 20303967
 * Rearranged and simplified code
 * Removed redundant parameters, variables and imports
 * Removed EndGame.java to replace with endGame.fxml
-## Modified Classes
+# Modified Classes
 ### Account
 *   Account paramters take in username, password and score
 *   Implemented makeNewAccount method to add new account to array and text file
