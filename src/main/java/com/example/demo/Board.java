@@ -9,8 +9,7 @@ import javafx.scene.media.AudioClip;
 import java.util.Random;
 
 /**
- * Name: Board Class
- * Purpose: Generate board based on board size and handles all cell operations including movement and spawning
+ * Generate board based on board size and handles all cell operations including movement and spawning
  */
 public class Board {
     private final Group root;
@@ -18,8 +17,12 @@ public class Board {
     private final static int distanceBetweenCells = 10;
     private static final int cellHEIGHT = 620;      //size of tiles
     private Cell[][] cells = new Cell[boardSize][boardSize];        //cells array
-    public static double LENGTH = (cellHEIGHT - ((boardSize + 1) * distanceBetweenCells)) / (double) boardSize;     //cell size
-    double scale;       //change board position based on size of board
+    private static double LENGTH = (cellHEIGHT - ((boardSize + 1) * distanceBetweenCells)) / (double) boardSize;     //cell size
+    private double scale;       //change board position based on size of board
+
+    public static double getLENGTH() {
+        return LENGTH;
+    }
 
     //sound effect when cells merge together
     private final AudioClip click = new AudioClip(getClass().getResource("Sounds/cellMerge.mp3").toExternalForm());
@@ -79,7 +82,7 @@ public class Board {
      *              have empty - board contains at lease one empty cell
      * @return integer (1 for empty, 0 for win, -1 for lose)
      */
-    int haveEmptyCell() {
+    public int haveEmptyCell() {
         for (int i = 0; i < boardSize; i++) {
             for (int j = 0; j < boardSize; j++) {
                 if (cells[i][j].getNumber() == 0)
@@ -425,7 +428,7 @@ public class Board {
      * @return true if no movement can be made (no same number cells next to each other)
      *         false if movement can be made (there are same number cells next to each other)
      */
-    boolean canNotMove() {
+    public boolean canNotMove() {
         for (int i = 0; i < boardSize; i++) {
             for (int j = 0; j < boardSize; j++) {
                 if (haveSameNumber(i, j)) {
@@ -446,6 +449,7 @@ public class Board {
     private void sumCellNumbersToScore(int i, int j) {
         click.play();       //play sound effect
         long cellNumber = cells[i][j].getNumber();
-        GameScene.score += cellNumber * 2;
+        long score = GameScene.getScore();
+        GameScene.setScore(score + cellNumber * 2);
     }
 }

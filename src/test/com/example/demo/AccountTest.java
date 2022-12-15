@@ -5,14 +5,12 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
-import static com.example.demo.Account.accounts;
-
 class AccountTest {
 
     @Test
     void accountHaveBeenExist() {
         Account oldAcc = new Account("test", "123", "50");
-        accounts.add(oldAcc);
+        Account.getAccounts().add(oldAcc);
         Account actual = Account.accountHaveBeenExist("test");
 
         Assertions.assertEquals(oldAcc,actual);
@@ -21,9 +19,9 @@ class AccountTest {
     @Test
     void makeNewAccount() {
         Account newAcc = new Account("test2", "123", "0");
-        accounts.add(newAcc);
+        Account.getAccounts().add(newAcc);
 
-        Assertions.assertEquals(newAcc, accounts.get(0));
+        Assertions.assertEquals(newAcc, Account.getAccounts().get(0));
     }
 
     @Test

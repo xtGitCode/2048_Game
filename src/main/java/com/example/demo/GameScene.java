@@ -35,8 +35,16 @@ import static com.example.demo.Main.WIDTH;
  *          Display and manage elements like score, timer, text, labels
  */
 public class GameScene {
-    static int counter = 30;        //counter for timer mode
-    public static long score = 0;       //initialize score to 0 when game starts
+    private static int counter = 30;        //counter for timer mode
+    private static long score = 0;       //initialize score to 0 when game starts
+
+    public static long getScore() {
+        return score;
+    }
+
+    public static void setScore(long score) {
+        GameScene.score = score;
+    }
 
     /**
      * Name: updateScore

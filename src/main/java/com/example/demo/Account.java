@@ -9,17 +9,16 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
- * Name: Account Class
- * Purpose: Creates and manages accounts when user log in or sign up
+ * Creates and manages accounts when user log in or sign up
  */
 public class Account implements Comparable<Account> {
     private long highScore = 0;
     private String userName ;
     private String password ;
-    public static ArrayList<Account> accounts = new ArrayList<>();
+    private static ArrayList<Account> accounts = new ArrayList<>();
 
     /**
-     * Name: Account (the constructor)
+     * Account (the constructor)
      * @param userName User's name
      * @param password User's password for authentication
      * @param highScore User's best score in game
@@ -47,9 +46,12 @@ public class Account implements Comparable<Account> {
         return password;
     }
 
+    public static ArrayList<Account> getAccounts() {
+        return accounts;
+    }
+
     /**
-     * Name: accountHaveBeenExist
-     * Purpose: Check whether user's account exist in system database
+     * Check whether user's account exist in system database
      * @param userName User input username
      * @return user's account if it exists, else, return null.
      */

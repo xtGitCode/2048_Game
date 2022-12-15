@@ -34,7 +34,7 @@ class TextMaker {
      * @return text that is created
      */
     static Text madeText(String input, double xCell, double yCell) {
-        double length = Board.LENGTH;
+        double length = Board.getLENGTH();
         double fontSize = (2 * length) / 7.0;
         Text text = new Text(input);
         text.setFont(Font.font(fontSize));

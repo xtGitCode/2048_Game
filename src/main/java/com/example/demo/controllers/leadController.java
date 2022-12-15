@@ -23,7 +23,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import static com.example.demo.Account.accounts;
 import static com.example.demo.Main.HEIGHT;
 import static com.example.demo.Main.WIDTH;
 
@@ -50,7 +49,7 @@ public class leadController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        for(Account account : accounts){
+        for(Account account : Account.getAccounts()){
             data.add(new Account(account.getUserName(),account.getPassword(),Long.toString(account.getScore())));
         }
         usernameCol.setCellValueFactory(col ->new SimpleStringProperty(col.getValue().getUserName()));
