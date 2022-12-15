@@ -17,8 +17,7 @@ import static com.example.demo.Main.HEIGHT;
 import static com.example.demo.Main.WIDTH;
 
 /**
- * Name: LoginController Class
- * Purpose: Manage operation of login.fxml and signup.fxml
+ * Manage operation of login.fxml and signup.fxml
  */
 public class LoginController {
     public static String username;
@@ -35,8 +34,7 @@ public class LoginController {
     private TextField enterPassword;
 
     /**
-     * Name: returnMenuButton
-     * Purpose: load main menu page and display
+     * load main menu page and display
      * @param event
      * @throws Exception
      */
@@ -50,8 +48,7 @@ public class LoginController {
     }
 
     /**
-     * Name: signupAccButton
-     * Purpose: create and store account if username not in database record
+     * create and store account if username not in database record
      * @throws Exception
      */
     @FXML
@@ -71,8 +68,7 @@ public class LoginController {
     }
 
     /**
-     * Name: loginAccButton
-     * Purpose: check if username and password is correct, then load main menu and display for user
+     * check if username and password is correct, then load main menu and display for user
      * @param event
      * @throws Exception
      */
@@ -106,8 +102,7 @@ public class LoginController {
     }
 
     /**
-     * Name: switchSignUp
-     * Purpose: switch scene to sign up page
+     * switch scene to sign up page
      * @param event
      * @throws Exception
      */
@@ -121,8 +116,7 @@ public class LoginController {
     }
 
     /**
-     * Name: switchLogin
-     * Purpose: switch scene to login page
+     * switch scene to login page
      * @param event
      * @throws Exception
      */
