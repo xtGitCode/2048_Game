@@ -25,6 +25,7 @@ import java.io.*;
 import java.util.Scanner;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import static com.example.demo.Main.HEIGHT;
 import static com.example.demo.Main.WIDTH;
@@ -101,6 +102,7 @@ public class GameScene {
      * Return: void
      */
     public void showGame(Scene gameScene, Group root, boolean timerMode, Stage primaryStage, long highScore, int size) {
+        AtomicBoolean winBefore = new AtomicBoolean(false);
         Board BOARD = new Board(size, root);        //create board object to generate board and cells
 
         //implement timer
@@ -267,7 +269,11 @@ public class GameScene {
                                 score = 0;
                             }
                             break;
-                        case 0:     //2048 cell found then win game
+                    }
+
+                    //Win Condition
+                    if (BOARD.getIsWin() == 2048){
+                        if (winBefore.get() == false){        //never win before, prompt alert box
                             Alert a = new Alert(Alert.AlertType.NONE);
                             a.setAlertType(Alert.AlertType.CONFIRMATION);
                             a.getButtonTypes().clear();
@@ -277,12 +283,26 @@ public class GameScene {
                             a.setContentText("Continue playing?");
                             a.showAndWait().ifPresent(response -> {
                                 if (response == ButtonType.NO) {
-                                    Platform.exit();
+                                    FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("fxml/winGame.fxml"));
+                                    Scene winScene = null;
+                                    try {
+                                        winScene = new Scene(fxmlLoader.load(), 780, 780);
+                                    } catch (IOException e) {
+                                        e.printStackTrace();
+                                    }
+                                    EndGameController endController = fxmlLoader.getController();
+                                    endController.curScore.setText(score + "");
+                                    endController.bestScore.setText(highScore + "");
+                                    primaryStage.setScene(winScene);
+                                    primaryStage.show();
+                                    root.getChildren().clear();
+                                    score = 0;
+                                } else if (response == ButtonType.YES){
+                                    winBefore.set(true);
                                 }
                             });
-
+                        }
                     }
-
                 }
             });
 

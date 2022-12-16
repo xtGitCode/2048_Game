@@ -19,6 +19,11 @@ public class Board {
     private Cell[][] cells = new Cell[boardSize][boardSize];        //cells array
     private static double LENGTH = (cellHEIGHT - ((boardSize + 1) * distanceBetweenCells)) / (double) boardSize;     //cell size
     private double scale;       //change board position based on size of board
+    private double isWin;         // check win condition
+
+    public double getIsWin() {
+        return isWin;
+    }
 
     public static double getLENGTH() {
         return LENGTH;
@@ -74,18 +79,15 @@ public class Board {
 
     /**
      * check if board is in any of these conditions
-     *              win - board contains 2048 cell
      *              lose - no empty cells left in board
      *              have empty - board contains at lease one empty cell
-     * @return integer (1 for empty, 0 for win, -1 for lose)
+     * @return integer (1 for empty, -1 for lose)
      */
     public int haveEmptyCell() {
         for (int i = 0; i < boardSize; i++) {
             for (int j = 0; j < boardSize; j++) {
                 if (cells[i][j].getNumber() == 0)
                     return 1; //empty
-                if(cells[i][j].getNumber() == 2048)
-                    return 0; //win game
             }
         }
         return -1; //lose game
@@ -342,6 +344,9 @@ public class Board {
             sumCellNumbersToScore(i,j);         //only when cells merge, score is calculated
             cells[i][j].adder(cells[i][des + sign]);
             cells[i][des].setModify(true);
+            if (isWin < cells[i][des + sign].getNumber()){
+                isWin = cells[i][des + sign].getNumber();
+            }
             return 1;
         } else if (des != j) {
             cells[i][j].changeCell(cells[i][des]);      //cells didn't merge but change position
@@ -382,6 +387,9 @@ public class Board {
             sumCellNumbersToScore(i,j);
             cells[i][j].adder(cells[des + sign][j]);
             cells[des][j].setModify(true);
+            if (isWin < cells[j][des + sign].getNumber()){
+                isWin = cells[j][des + sign].getNumber();
+            }
             return 1; // to check whether any cells moved
         } else if (des != i) {
             cells[i][j].changeCell(cells[des][j]);
