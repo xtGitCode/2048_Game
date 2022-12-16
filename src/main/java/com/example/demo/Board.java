@@ -405,7 +405,7 @@ public class Board {
      * @return true if have same number cells
      *         false if no same number cells
      */
-    private boolean haveSameNumber(int i, int j) {
+    public boolean haveSameNumber(int i, int j) {
         if (i < boardSize - 1 && j < boardSize - 1) {
             if (cells[i + 1][j].getNumber() == cells[i][j].getNumber())
                 return true;
