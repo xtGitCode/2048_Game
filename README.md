@@ -3,7 +3,7 @@ Name: Gan Xiao Thung\
 Student ID: 20303967
 # How To Run
 ### Requirements
-* Javafx-sdk-19 (need to link path to project structure - libraries)
+* Javafx-sdk-19 
 ### How to Compile? 
 1. Open GanXiaoThung_JavaVersion folder in IDE
 2. Build project
@@ -20,11 +20,9 @@ Student ID: 20303967
 ### Leaderboard 
 *   Display top 10 users with highest score in database
 ### 2048 Game
-*   Added game modes - endless or timer
+*   Game modes - endless or timer
 *   Change color theme
-*   Scores
 *   Save score function
-*   End and win condition
 *   Display score and best score of user during end/win game scene
 ## Future Improvements
 ### Main Menu
