@@ -52,10 +52,10 @@ Student ID: 20303967
 *   Return to main menu button
 ### LoginController (handle log in and sign up operations)
 *   Login : Check username and password to match with database record
--   if not then show error
--   if correct then bring user to user menu
+  -   if not then show error
+  -   if correct then bring user to user menu
 *   Signup : store username and password to database
--   prompt user to login 
+  -   prompt user to login 
 * Board - (generate board and operate cells movement)
 # Refactoring Done
 * Break down class to smaller subclasses
@@ -73,7 +73,7 @@ Student ID: 20303967
 *   New method -> createdAccounts (add all created accounts in text file to arraylist)
 ### GameScene
 *   Break down original class to subclass - Board
--   Moved methods and variables related to cells to Board class
+  -   Moved methods and variables related to cells to Board class
 *   New method -> updateScore (updates current score to users database)
 *   Rename method game to showGame
 *   Implement new game mode - timer mode (after timer ends game stops)
