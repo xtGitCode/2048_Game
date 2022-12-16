@@ -32,7 +32,7 @@ public class Main extends Application {
         sound = new Media(Objects.requireNonNull(getClass().getResource("Sounds/HappyParrotMusic.mp3")).toExternalForm());
         MediaPlayer mediaPlayer = new MediaPlayer(sound);
         mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
-       // mediaPlayer.play();
+        mediaPlayer.play();
 
         Account.createdAccounts("users.txt");       //Initialize existing accounts when program starts
 

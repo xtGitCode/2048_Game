@@ -78,7 +78,7 @@ public class Account implements Comparable<Account> {
         sb.append(userName + "," + highScore + "\n");
         sb.append(password + "\n");
 
-        File file = new File("users.txt");
+        File file = new File("src/users.txt");
         BufferedWriter bw = new BufferedWriter(new FileWriter(file, true));
         bw.write(sb.toString());
         bw.close();

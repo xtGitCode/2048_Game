@@ -55,12 +55,12 @@ public class GameScene {
      */
     public void updateScore(long oldScore, long newScore) throws IOException {
         if (newScore > oldScore) {
-            File file = new File("users.txt");
+            File file = new File("src/users.txt");
             String data = "";
             String stringToReplace = LoginController.username + "," + oldScore;
             String replaceWith = LoginController.username + "," + newScore;
             String line;
-            Scanner s = new Scanner(new File("users.txt"));     //read text file
+            Scanner s = new Scanner(new File("src/users.txt"));     //read text file
             while (s.hasNextLine()) {
                 line = s.nextLine();        //store string in file to line
                 if (line.contains(stringToReplace)) {
