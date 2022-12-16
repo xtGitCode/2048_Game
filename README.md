@@ -32,6 +32,10 @@ Student ID: 20303967
 ### Game
 *   When change board size from 4x4 or 6x6 to 8x8, error will occur in program
 *   When 2 different merges are to happen in same cell row, only 1 is merged
+### Leaderboard
+* Different leaderboard for different game modes and board sizes
+### Save function
+* Not only able to save score but current board as well
 # New Classes
 ### Controller (handle main menu operations)
 *   Login / Logout Button
