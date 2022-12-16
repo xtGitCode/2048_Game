@@ -59,6 +59,7 @@ COMP2042/javadocs
     -   prompt user to login 
 * Board - (generate board and operate cells movement)
 # Refactoring Done
+* Created JUnits
 * Break down class to smaller subclasses
 * Rename variables and methods 
 * Change class variables to private and use getters/ setters to improve encapsulation
