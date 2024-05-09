@@ -3,7 +3,7 @@
 ### Requirements
 * Javafx-sdk-19 
 ### How to Compile? 
-1. Open GanXiaoThung_JavaVersion folder in IDE
+1. Open folder in IDE
 2. Build project
 3. Click run and program will start 
 # Key Features
@@ -31,63 +31,20 @@
 * Different leaderboard for different game modes and board sizes
 ### Save function
 * Not only able to save score but current board as well
-# New Classes
-### Controller (handle main menu operations)
-*   Login / Logout Button
-*   Start Game Button
-*   Leaderboard Button
-*   Quit Button
-### EndGameController (handle end game and win game operations)
-*   Return to main menu Button
-*   Quit Button
-### gameModeController (handle game mode operations)
-*   Choose color theme
-*   Choose board size
-*   Choose game mode
-### leadController (handle leaderboard operations)
-*   display leaderboard
-*   Return to main menu button
-### LoginController (handle log in and sign up operations)
-*   Login : Check username and password to match with database record
-    -   if not then show error
-    -   if correct then bring user to user menu
-*   Signup : store username and password to database
-    -   prompt user to login 
-* Board - (generate board and operate cells movement)
-# Refactoring Done
-* Created JUnits
-* Break down class to smaller subclasses
-* Rename variables and methods 
-* Change class variables to private and use getters/ setters to improve encapsulation
-* Fix bugs in source code
-* Rearranged and simplified code
-* Removed redundant parameters, variables and imports
-* Removed EndGame.java to replace with endGame.fxml
-# Modified Classes
-### Account
-*   Account paramters take in username, password and score
-*   Implemented makeNewAccount method to add new account to array and text file
-*   New method -> sortAccounts (sort accounts in arraylist ascending by score)
-*   New method -> createdAccounts (add all created accounts in text file to arraylist)
-### GameScene
-*   Break down original class to subclass - Board
-    -   Moved methods and variables related to cells to Board class
-*   New method -> updateScore (updates current score to users database)
-*   Rename method game to showGame
-*   Implement new game mode - timer mode (after timer ends game stops)
-*   Added save score button for user to save their current score anytime 
-### Board (Previously in GameScene)
-*   Fix win condition 
-*   Fix scoring 
-*   Fix key valid movement (only arrow keys and ESC are valid)
-*   Fix cells spawning so that only when cells moved, new cell is spawn
-*   Added sound effect for when cells merge
-*   Change position of board to center
-### Cell
-*   Simplify setColorByNumber method's switch case 
-*   Change design of cell by making rectangle edge more curve
-### Main
-*   Removed all scenes initialization
-*   Only initialize menu scene when runs
-### TextMaker
-*   Change font size to smaller
+## Screenshots
+![image](https://github.com/xtGitCode/2048_Game/assets/103571608/9e2f4970-33d9-4dd4-8544-b127fd9c18ef)
+![image](https://github.com/xtGitCode/2048_Game/assets/103571608/437043f5-804d-46a4-940c-589e681ad277)
+![image](https://github.com/xtGitCode/2048_Game/assets/103571608/624f449e-ad24-4cbc-9c79-0c573934dc6c)
+![image](https://github.com/xtGitCode/2048_Game/assets/103571608/1eed8524-ca14-47c0-a23f-c05216befd62)
+![image](https://github.com/xtGitCode/2048_Game/assets/103571608/49e1ba7e-9f9c-43ed-8c8c-44a590da727c)
+![image](https://github.com/xtGitCode/2048_Game/assets/103571608/997b07ef-d788-425a-92ec-6a80f606cc68)
+![image](https://github.com/xtGitCode/2048_Game/assets/103571608/5062ab30-b11e-4680-bc97-5857c56bf347)
+![image](https://github.com/xtGitCode/2048_Game/assets/103571608/173f0313-a482-455c-976d-81a0cf846813)
+
+
+
+
+
+
+
+
