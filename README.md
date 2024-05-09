@@ -1,6 +1,4 @@
-# Software-Maintenance-Coursework---20303967
-Name: Gan Xiao Thung\
-Student ID: 20303967
+# 2048 Game Software
 # How To Run
 ### Requirements
 * Javafx-sdk-19 
@@ -8,8 +6,6 @@ Student ID: 20303967
 1. Open GanXiaoThung_JavaVersion folder in IDE
 2. Build project
 3. Click run and program will start 
-# Javadoc Path
-COMP2042/javadocs
 # Key Features
 ## Working Properly
 ### Background music
